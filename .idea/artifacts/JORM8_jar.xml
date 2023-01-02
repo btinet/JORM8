@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JORM8:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JORM8_jar</output-path>
+    <root id="archive" name="JORM8.jar">
+      <element id="module-output" name="JORM8" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/icons" />
+    </root>
+  </artifact>
+</component>
