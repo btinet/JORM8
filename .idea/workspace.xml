@@ -9,32 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JORM8_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/global/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/global/Resources.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/model/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/KollegiatRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config/database.bak.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_eye_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_lips_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_view_all_16px.png" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JORM8_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/JORM8_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +70,14 @@
       <option name="presentableId" value="Default" />
       <updated>1672657681018</updated>
     </task>
+    <task id="LOCAL-00001" summary="init commit">
+      <created>1672681318126</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672681318126</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,5 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
 </project>
