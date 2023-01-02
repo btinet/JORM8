@@ -1,5 +1,7 @@
 package core.controller;
 
+import core.model.Entity;
+import core.model.Repository;
 import core.view.View;
 
 import java.awt.*;
@@ -10,8 +12,15 @@ public abstract class Controller implements ActionListener {
 
     protected View view;
 
-    public Controller(View view){
+    protected Repository repository;
+
+    public Controller(View view, Repository repository){
        this.view = view;
+       this.repository = repository;
+    }
+
+    public Repository getRepository(){
+        return this.repository;
     }
 
     public void addLayoutComponent(Component c, String constraint){
