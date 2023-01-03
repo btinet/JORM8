@@ -109,7 +109,7 @@ public abstract class Repository {
         }
     }
 
-    public ArrayList<Entity> findAll(){
+    public ArrayList<? extends Entity> findAll(){
         try {
             try {
                 return this.createQueryBuilder()

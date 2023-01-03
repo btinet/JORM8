@@ -1,0 +1,314 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "controller.AppController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_104069929 { 
+   	label=model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Entity937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Entity</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+QueryBuilder937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)QueryBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   condition: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   entity: Entity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   integerParameters: HashMap&lt;Integer, Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   naturalCase: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   projection: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   query: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   statement: PreparedStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stringParameters: HashMap&lt;Integer, String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ucFirst: Boolean [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># andWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateSnakeTailString(value: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># orWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># select(fields: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># selectOrm(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: int): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: String): QueryBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Repository937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Repository</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   entity: Entity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   naturalCase: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   queryBuilder: QueryBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ucFirst: Boolean [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># createQueryBuilder(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># doFind(id: int, field: String): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(id: int): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(id: int, field: String): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findAll(): ArrayList&lt;? extends Entity&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findBy(condition: HashMap&lt;String, String&gt;): ArrayList&lt;Entity&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findOneBy(condition: HashMap&lt;String, String&gt;): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAlias(alias: String): Repository</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setEntity(entity: Entity): Repository</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setUcFirst(): Repository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1950800714 { 
+   	label=repository
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AntragRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AntragRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FachRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FachRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+KollegiatRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)KollegiatRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LehrkraftRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LehrkraftRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThemaRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThemaRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3619493 { 
+   	label=view
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   View1632063596[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)View</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   cardLayout: CardLayout [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   frame: JFrame [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imagePath: URL [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># init()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_637428636 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Controller712365749[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   repository: Repository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   view: View [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addLayoutComponent(c: Component, constraint: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_96801 { 
+   	label=app
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppMenuBar1194705752[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppMenuBar</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getComponent(view: View): JMenuBar</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Controller712365749 -> AppController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> Repository937501722[label="repository
+[0..1]"];
+Controller712365749 -> View1632063596[label="view
+[0..1]"];
+QueryBuilder937501722 -> Entity937501722[label="entity
+[0..1]"];
+Repository937501722 -> AntragRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> Entity937501722[label="entity
+[0..1]"];
+Repository937501722 -> FachRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> KollegiatRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> LehrkraftRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> QueryBuilder937501722[label="queryBuilder
+[0..1]"];
+Repository937501722 -> ThemaRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+View1632063596 -> AppMenuBar1194705752[label="init() -> getComponent()"];
+    
+}
+@enduml

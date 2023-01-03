@@ -1,0 +1,387 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "core.model.Entity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_104069929 { 
+   	label=model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Entity937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Entity</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+QueryBuilder937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)QueryBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   condition: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   entity: Entity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   integerParameters: HashMap&lt;Integer, Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   naturalCase: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   projection: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   query: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   statement: PreparedStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stringParameters: HashMap&lt;Integer, String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ucFirst: Boolean [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># andWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >- generateSnakeTailString(value: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># orWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># select(fields: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># selectOrm(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: int): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: String): QueryBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Repository937501722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Repository</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   entity: Entity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   naturalCase: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   queryBuilder: QueryBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ucFirst: Boolean [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># createQueryBuilder(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" ># doFind(id: int, field: String): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(id: int): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(id: int, field: String): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findAll(): ArrayList&lt;? extends Entity&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findBy(condition: HashMap&lt;String, String&gt;): ArrayList&lt;Entity&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findOneBy(condition: HashMap&lt;String, String&gt;): Entity</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAlias(alias: String): Repository</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setEntity(entity: Entity): Repository</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setUcFirst(): Repository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1298275357 { 
+   	label=entity
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Antrag1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Antrag</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   AID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   KID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   alsEinzelpruefung: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   genehmigtAm: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Fach1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fach</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   Bezeichnung: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Kollegiat1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Kollegiat</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   BetreuerID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   KID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   TutorID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Vorname: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Lehrkraft1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Lehrkraft</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   Anrede: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   LID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Vorname: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LehrkraftFach1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LehrkraftFach</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   LFID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   LID: Integer [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Thema1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Thema</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   Erlaeuterung: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   Leitfrage: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   PruefJahr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThemaFach1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThemaFach</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   TFID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   istRefFach: Boolean [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1950800714 { 
+   	label=repository
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AntragRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AntragRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FachRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FachRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+KollegiatRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)KollegiatRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LehrkraftRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LehrkraftRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThemaRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThemaRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_637428636 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Controller712365749[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   repository: Repository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   view: View [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addLayoutComponent(c: Component, constraint: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Controller712365749 -> AppController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> Repository937501722[label="repository
+[0..1]"];
+Entity937501722 -> Antrag1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> Fach1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> Kollegiat1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> Lehrkraft1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> LehrkraftFach1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> Thema1298275357[arrowhead=none, arrowtail=empty, dir=both];
+Entity937501722 -> ThemaFach1298275357[arrowhead=none, arrowtail=empty, dir=both];
+QueryBuilder937501722 -> Entity937501722[label="entity
+[0..1]"];
+Repository937501722 -> AntragRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> Entity937501722[label="entity
+[0..1]"];
+Repository937501722 -> FachRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> KollegiatRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> LehrkraftRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> QueryBuilder937501722[label="queryBuilder
+[0..1]"];
+Repository937501722 -> ThemaRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+    
+}
+@enduml
