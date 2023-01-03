@@ -1,13 +1,15 @@
 package controller;
 
 import core.controller.Controller;
+import core.model.Entity;
 import core.view.View;
 import entity.Kollegiat;
-import javafx.scene.layout.Pane;
-import jdk.nashorn.internal.runtime.ScriptObject;
 import repository.KollegiatRepository;
+import view.kollegiat.TablePanel;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -22,8 +24,10 @@ public class AppController extends Controller {
 
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll();
 
-        JPanel main = new JPanel();
-        main.setLayout(new GridBagLayout());
+        JPanel main = new JPanel(new GridBagLayout());
+
+
+
 
         JLabel l2 = new JLabel("Alle Daten");
 
@@ -36,101 +40,120 @@ public class AppController extends Controller {
         constraints.weighty = 1;
         constraints.insets = new Insets(10,10,0,10);
 
+        JButton showBtn = new JButton("ausgewähltes Element anzeigen");
+        showBtn.addActionListener((new AppController(view)::show));
+        showBtn.setActionCommand("0");
+
         JPanel panel = new JPanel(new GridBagLayout());
 
+        JTextField tutorText = new JTextField();
+        tutorText.setPreferredSize(new Dimension(200,18));
+        tutorText.setEnabled(false);
+        JTextField betreuerText = new JTextField();
+        betreuerText.setEnabled(false);
+        betreuerText.setPreferredSize(new Dimension(200,18));
+        JLabel tutorLabel = new JLabel("Tutor");
+        JLabel betreuerLabel = new JLabel("Betreuer");
 
-        int i = 1;
-        for(Kollegiat kollegiat : kollegiatArrayList){
-            JPanel titleCard = new JPanel();
-            BoxLayout boxLayout = new BoxLayout(titleCard,BoxLayout.LINE_AXIS);
-            titleCard.setLayout(boxLayout);
+        JPanel tutorPanel = new JPanel();
+        JPanel betreuerPanel = new JPanel();
+        tutorPanel.add(tutorLabel);
+        tutorPanel.add(tutorText);
+        betreuerPanel.add(betreuerLabel);
+        betreuerPanel.add(betreuerText);
 
-            titleCard.add(new JLabel("Vorname"));
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
-            JTextField vorname = new JTextField(kollegiat.getVorname());
-            vorname.setPreferredSize(new Dimension(100,20));
-            titleCard.add(vorname);
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
+        JList<Object> kollegiatJList = new JList<>(kollegiatArrayList.toArray());
+        kollegiatJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        kollegiatJList.addListSelectionListener(new ListSelectionListener() {
 
-            titleCard.add(new JLabel("Name"));
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
-            JTextField name = new JTextField(kollegiat.getName());
-            name.setPreferredSize(new Dimension(100,20));
-            titleCard.add(name);
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                    if(kollegiatJList.getSelectedValue() instanceof Kollegiat){
+                        Kollegiat kollegiat = (Kollegiat) kollegiatJList.getSelectedValue();
+                        showBtn.setActionCommand(String.valueOf(kollegiat.getKID()));
+                        tutorText.setText(kollegiat.getTutorID().toString());
+                        betreuerText.setText(kollegiat.getBetreuerID().toString());
+                    }
 
-            titleCard.add(new JLabel("Tutor"));
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
-            JTextField tutor = new JTextField(kollegiat.getTutorID().toString());
-            tutor.setPreferredSize(new Dimension(100,20));
-            titleCard.add(tutor);
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
-
-            titleCard.add(new JLabel("Betreuer"));
-            titleCard.add(Box.createRigidArea(new Dimension(10, 0)));
-            JTextField betreuer = new JTextField(kollegiat.getBetreuerID().toString());
-            betreuer.setPreferredSize(new Dimension(100,20));
-            titleCard.add(betreuer);
-
-            panel.add(titleCard, constraints);
-
-            if(i == kollegiatArrayList.toArray().length){
-                JPanel end = new JPanel();
-                BoxLayout endLayout = new BoxLayout(end,BoxLayout.LINE_AXIS);
-                end.setLayout(endLayout);
-                end.add(Box.createRigidArea(new Dimension(0, 10)));
-
-                panel.add(end,constraints);
+                }
             }
-            i++;
-        }
+        });
+
+
+        GridBagConstraints panelBag = new GridBagConstraints();
+        panelBag.ipadx = 10;
+        panelBag.anchor = GridBagConstraints.PAGE_START;
+        panelBag.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally. A weightx is needed for this to work.
+        panelBag.gridx = 0;
+        panelBag.gridy = 0;
+        panelBag.weightx = 1;
+        panelBag.weighty = 1;
+        panelBag.insets = new Insets(10,10,0,10);
+
 
         JPanel cardBottom = new JPanel();
         cardBottom.setBackground(new Color(200,200,220));
         cardBottom.add(l2);
         constraints.insets = new Insets(10,10,10,10);
 
-        JScrollPane scrollPane = new JScrollPane (panel,
-                ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setPreferredSize(new Dimension(main.getWidth(),400));
         constraints.gridy = 0;
-        main.add(cardBottom,constraints);
+        panel.add(kollegiatJList,constraints);
         constraints.gridy = 1;
-        main.add(scrollPane,constraints);
+        panel.add(showBtn,constraints);
+        constraints.gridy = 2;
+        panel.add(tutorPanel,constraints);
+        constraints.gridy = 3;
+        panel.add(betreuerPanel,constraints);
 
-        addLayoutComponent(main,"Panel");
+        constraints.gridy = 0;
+        main.add(panel,constraints);
+        addLayoutComponent(new JScrollPane(main),"Panel");
         setLayout("Panel");
         System.out.println("AppController::index wurde aufgerufen!");
     }
 
     public void show(ActionEvent e) {
 
-        Kollegiat kollegiat = (Kollegiat) getRepository().find(1,"KID");
-
-        JTextField name = new JTextField();
-        JTextField name2 = new JTextField();
-        name.setText(kollegiat.getVorname());
-        name.setToolTipText("Vorname");
-        name.setPreferredSize(new Dimension(200,20));
-        name2.setText(kollegiat.getName());
-        name2.setPreferredSize(new Dimension(200,20));
+        Kollegiat kollegiat;
 
         JPanel p = new JPanel();
         p.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         JLabel l = new JLabel("Antrag anzeigen");
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.gridwidth = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(5,5,5,5);
-        p.add(l,gbc);
-        p.add(name,gbc);
-        p.add(name2,gbc);
         gbc.weightx = 1;
-        gbc.weighty = 1;
+        gbc.weighty = 0;
         gbc.fill = GridBagConstraints.BOTH;
+        p.add(l,gbc);
+
+        int id = Integer.decode(e.getActionCommand());
+        if(0 != id){
+            kollegiat = (Kollegiat) getRepository().find(id,"KID");
+            JTextField name = new JTextField();
+            JTextField name2 = new JTextField();
+            name.setText(kollegiat.getVorname());
+            name.setToolTipText("Vorname");
+            name.setPreferredSize(new Dimension(200,20));
+            name2.setText(kollegiat.getName());
+            name2.setPreferredSize(new Dimension(200,20));
+            p.add(name,gbc);
+            p.add(name2,gbc);
+
+        } else {
+            l.setText("Kein Element wurde ausgewählt");
+        }
+
+
+
+
         addLayoutComponent(p,"Panel");
         setLayout("Panel");
         System.out.println("AppController::show wurde aufgerufen!");
+
+
+
     }
 
 }

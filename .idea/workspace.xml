@@ -9,23 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add repository manager">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AppController_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/model/Entity_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Antrag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Fach.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Lehrkraft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/LehrkraftFach.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Thema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/ThemaFach.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AntragRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/FachRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/LehrkraftRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/ThemaRepository.java" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update view">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/kollegiat/JTableButtonRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/kollegiat/TablePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +29,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
