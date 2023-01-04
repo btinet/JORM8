@@ -10,14 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AntragController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/FachController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/KollegiatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LehrkraftController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ThemaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/model/ResultSorter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController_structure.puml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Entity_structure.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Lehrkraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Lehrkraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

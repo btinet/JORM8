@@ -127,6 +127,25 @@ public abstract class Repository {
         }
     }
 
+    public ArrayList<? extends Entity> findAll(HashMap<String, String> orderBy){
+        try {
+            try {
+                return this.createQueryBuilder()
+                        .selectOrm()
+                        .orderBy(orderBy)
+                        .getQuery()
+                        .getResult()
+                        ;
+
+            } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
+                     IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     protected Entity doFind(int id, String field){
         try {
             try {

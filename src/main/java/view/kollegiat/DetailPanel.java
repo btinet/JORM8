@@ -15,6 +15,9 @@ public class DetailPanel extends JPanel {
     protected Kollegiat kollegiat;
 
     protected JTextField fieldVorname;
+    protected JTextField fieldNachname;
+    protected JTextField fieldTutor;
+    protected JTextField fieldBetreuer;
 
     public DetailPanel(Kollegiat kollegiat){
         this.gridBagLayout = new GridBagLayout();
@@ -34,32 +37,77 @@ public class DetailPanel extends JPanel {
 
         JLabel vorname = new JLabel("Vorname");
         this.fieldVorname = new JTextField();
+        this.fieldVorname.setBackground(new Color(220,220,224));
         this.fieldVorname.setEditable(false);
         this.fieldVorname.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
-        this.gbc.setWeightX(0.5);
-        this.gbc.setWidth(1);
+        JLabel nachname = new JLabel("Nachname");
+        this.fieldNachname = new JTextField();
+        this.fieldNachname.setEditable(false);
+        this.fieldNachname.setBackground(new Color(220,220,224));
+        this.fieldNachname.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+
+        JLabel tutor = new JLabel("Tutor:in");
+        this.fieldTutor = new JTextField();
+        this.fieldTutor.setEditable(false);
+        this.fieldTutor.setBackground(new Color(220,220,224));
+        this.fieldTutor.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+
+        JLabel betreuer = new JLabel("Betreuer:in");
+        this.fieldBetreuer = new JTextField();
+        this.fieldBetreuer.setEditable(false);
+        this.fieldBetreuer.setBackground(new Color(220,220,224));
+        this.fieldBetreuer.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+
+        // Zellen setzen
+
+        // Row 1
+
         this.gbc.setRow(0);
         this.gbc.setColumn(0);
         this.gbc.setInsets(new Insets(10,0,0,10));
         add(vorname,this.gbc);
-        this.gbc.setWeightX(0.5);
-        this.gbc.setWidth(1);
+
         this.gbc.setRow(0);
         this.gbc.setColumn(1);
-        add(new JLabel("Test"),this.gbc);
-        this.gbc.setWeightX(0);
-        this.gbc.setWidth(2);
+        add(nachname,this.gbc);
+
+        this.gbc.setRow(0);
+        this.gbc.setColumn(2);
+        add(tutor,this.gbc);
+
+        this.gbc.setRow(0);
+        this.gbc.setColumn(3);
+        this.gbc.setInsets(new Insets(10,0,0,0));
+        add(betreuer,this.gbc);
+
+        // Row 2
+
         this.gbc.setRow(1);
         this.gbc.setColumn(0);
-        this.gbc.setInsets(new Insets(10,0,0,0));
+        this.gbc.setInsets(new Insets(5,0,0,10));
         add(this.fieldVorname,this.gbc);
 
+        this.gbc.setRow(1);
+        this.gbc.setColumn(1);
+        add(this.fieldNachname,this.gbc);
+
+        this.gbc.setRow(1);
+        this.gbc.setColumn(2);
+        add(this.fieldTutor,this.gbc);
+
+        this.gbc.setRow(1);
+        this.gbc.setColumn(3);
+        this.gbc.setInsets(new Insets(5,0,0,0));
+        add(this.fieldBetreuer,this.gbc);
 
     }
 
-    protected void updateFields(){
+    public void updateFields(){
         this.fieldVorname.setText(this.kollegiat.getVorname());
+        this.fieldNachname.setText(this.kollegiat.getName());
+        this.fieldTutor.setText(this.kollegiat.getTutor().toString());
+        this.fieldBetreuer.setText(this.kollegiat.getBetreuer().toString());
     }
 
 

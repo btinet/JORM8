@@ -1,6 +1,7 @@
 package entity;
 
 import core.model.Entity;
+import repository.LehrkraftRepository;
 
 public class Kollegiat extends Entity {
 
@@ -39,12 +40,22 @@ public class Kollegiat extends Entity {
         return TutorID;
     }
 
+    public Lehrkraft getTutor(){
+        LehrkraftRepository lehrkraftRepository = new LehrkraftRepository(true);
+        return (Lehrkraft) lehrkraftRepository.find(this.TutorID,"LID");
+    }
+
     public void setTutorID(Integer tutorID) {
         TutorID = tutorID;
     }
 
     public Integer getBetreuerID() {
         return BetreuerID;
+    }
+
+    public Lehrkraft getBetreuer(){
+        LehrkraftRepository lehrkraftRepository = new LehrkraftRepository(true);
+        return (Lehrkraft) lehrkraftRepository.find(this.BetreuerID,"LID");
     }
 
     public void setBetreuerID(Integer betreuerID) {

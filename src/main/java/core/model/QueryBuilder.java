@@ -1,5 +1,6 @@
 package core.model;
 
+import com.google.protobuf.MapEntry;
 import com.sun.istack.internal.Nullable;
 import core.global.Database;
 
@@ -26,6 +27,8 @@ public class QueryBuilder {
     private final StringBuilder projection = new StringBuilder();
 
     private final StringBuilder condition = new StringBuilder();
+
+    private final StringBuilder orderBy = new StringBuilder();
 
     private final StringBuilder query = new StringBuilder();
 
@@ -104,6 +107,18 @@ public class QueryBuilder {
         return this;
     }
 
+    protected QueryBuilder orderBy(HashMap<String, String> orderBy){
+        int i = 1;
+        for(Map.Entry<String, String> entry: orderBy.entrySet()){
+            this.orderBy.append(entry.getKey()).append(" ").append(entry.getValue().toUpperCase());
+            if(i < orderBy.size()){
+                this.orderBy.append(", ");
+            }
+            i++;
+        }
+        return this;
+    }
+
     protected QueryBuilder setParameter(Integer parameter, int value){
         this.integerParameters.put(parameter, value);
         return this;
@@ -130,6 +145,10 @@ public class QueryBuilder {
 
         if(0 != this.condition.length()){
             this.query.append(" WHERE ").append(this.condition);
+        }
+
+        if(0 != this.orderBy.length()){
+            this.query.append(" ORDER BY ").append(this.orderBy);
         }
 
         try {

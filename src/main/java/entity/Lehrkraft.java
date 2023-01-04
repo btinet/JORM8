@@ -11,7 +11,7 @@ public class Lehrkraft extends Entity {
 
     @Override
     public String toString(){
-        return this.getVorname() + " " + this.getName();
+        return this.getAnrede() + " " + this.getName();
     }
 
     public Integer getLID() {
