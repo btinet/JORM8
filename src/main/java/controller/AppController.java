@@ -5,6 +5,7 @@ import core.model.Entity;
 import core.view.View;
 import entity.Kollegiat;
 import repository.KollegiatRepository;
+import view.kollegiat.DetailPanel;
 import view.kollegiat.TablePanel;
 
 import javax.swing.*;
@@ -24,11 +25,10 @@ public class AppController extends Controller {
     }
 
     public void index(ActionEvent e) {
-
+        DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll();
 
         JPanel main = new JPanel(new GridBagLayout());
-
 
 
 
@@ -37,9 +37,9 @@ public class AppController extends Controller {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.ipadx = 10;
         constraints.anchor = GridBagConstraints.NORTH;
-        constraints.gridwidth = GridBagConstraints.PAGE_START;
+        constraints.gridwidth = 2;
         constraints.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally. A weightx is needed for this to work.
-        constraints.gridx = 0;
+        constraints.gridx = GridBagConstraints.RELATIVE;
         constraints.weightx = 1;
         constraints.weighty = 1;
         constraints.insets = new Insets(10,10,0,10);
@@ -51,11 +51,11 @@ public class AppController extends Controller {
         JPanel panel = new JPanel(new GridBagLayout());
 
         JTextField tutorText = new JTextField();
-        tutorText.setPreferredSize(new Dimension(200,18));
+        tutorText.setPreferredSize(new Dimension(200,20));
         tutorText.setEnabled(false);
         JTextField betreuerText = new JTextField();
         betreuerText.setEnabled(false);
-        betreuerText.setPreferredSize(new Dimension(200,18));
+        betreuerText.setPreferredSize(new Dimension(200,20));
         JLabel tutorLabel = new JLabel("Tutor");
         JLabel betreuerLabel = new JLabel("Betreuer");
 
@@ -76,8 +76,7 @@ public class AppController extends Controller {
                     if(kollegiatJList.getSelectedValue() instanceof Kollegiat){
                         Kollegiat kollegiat = (Kollegiat) kollegiatJList.getSelectedValue();
                         showBtn.setActionCommand(String.valueOf(kollegiat.getKID()));
-                        tutorText.setText(kollegiat.getTutorID().toString());
-                        betreuerText.setText(kollegiat.getBetreuerID().toString());
+                        kollegiatDetail.setKollegiat(kollegiat);
                     }
 
                 }
@@ -128,22 +127,26 @@ public class AppController extends Controller {
         constraints.insets = new Insets(5,5,5,5);
 
         JLabel title = new JLabel("Kollegiat:innen - Übersicht");
+        JLabel subTitle = new JLabel("Wähle einen Lernenden aus, um mehr zu erfahren.");
+        subTitle.setForeground(new Color(67,67,64));
         title.setFont(new Font("sans-serif",Font.PLAIN,14));
 
 
         panel.add(title,constraints);
         constraints.gridy = 1;
-        panel.add(kollegiatJList,constraints);
+        panel.add(subTitle,constraints);
         constraints.gridy = 2;
-        panel.add(showBtn,constraints);
+        panel.add(kollegiatJList,constraints);
         constraints.gridy = 3;
-        panel.add(tutorPanel,constraints);
+        panel.add(showBtn,constraints);
         constraints.gridy = 4;
-        panel.add(betreuerPanel,constraints);
+        panel.add(kollegiatDetail,constraints);
 
         constraints.gridy = 0;
         main.add(panel,constraints);
-        addLayoutComponent(new JScrollPane(main),"Panel");
+        JScrollPane sp = new JScrollPane(main);
+        sp.setBorder(BorderFactory.createEmptyBorder());
+        addLayoutComponent(sp,"Panel");
         setLayout("Panel");
         System.out.println("AppController::index wurde aufgerufen!");
     }
