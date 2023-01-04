@@ -12,6 +12,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class AppController extends Controller {
@@ -33,7 +36,8 @@ public class AppController extends Controller {
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.ipadx = 10;
-        constraints.anchor = GridBagConstraints.PAGE_START;
+        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.gridwidth = GridBagConstraints.PAGE_START;
         constraints.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally. A weightx is needed for this to work.
         constraints.gridx = 0;
         constraints.weightx = 1;
@@ -80,13 +84,39 @@ public class AppController extends Controller {
             }
         });
 
+        MouseListener mouseListener = new MouseAdapter() {
+            public void mouseClicked(MouseEvent mouseEvent) {
+                JList theList = (JList) mouseEvent.getSource();
+                if (mouseEvent.getClickCount() == 2) {
+                    int index = theList.locationToIndex(mouseEvent.getPoint());
+                    if (index >= 0) {
+                        Object o = theList.getModel().getElementAt(index);
+                        if(o instanceof Kollegiat){
+                            Kollegiat kollegiat = (Kollegiat) kollegiatJList.getSelectedValue();
+                            JButton click = new JButton();
+
+                            click.setActionCommand(String.valueOf(kollegiat.getKID()));
+
+                            click.addActionListener((new AppController(view)::show));
+                            click.doClick();
+                            System.out.println("Double-clicked on: " + o);
+                        }
+
+                    }
+                }
+            }
+        };
+
+        kollegiatJList.addMouseListener(mouseListener);
+
 
         GridBagConstraints panelBag = new GridBagConstraints();
         panelBag.ipadx = 10;
-        panelBag.anchor = GridBagConstraints.PAGE_START;
+        panelBag.anchor = GridBagConstraints.NORTH;
+        panelBag.gridwidth = GridBagConstraints.PAGE_START;
         panelBag.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally. A weightx is needed for this to work.
         panelBag.gridx = 0;
-        panelBag.gridy = 0;
+        panelBag.gridy = 1;
         panelBag.weightx = 1;
         panelBag.weighty = 1;
         panelBag.insets = new Insets(10,10,0,10);
@@ -95,15 +125,20 @@ public class AppController extends Controller {
         JPanel cardBottom = new JPanel();
         cardBottom.setBackground(new Color(200,200,220));
         cardBottom.add(l2);
-        constraints.insets = new Insets(10,10,10,10);
+        constraints.insets = new Insets(5,5,5,5);
 
-        constraints.gridy = 0;
-        panel.add(kollegiatJList,constraints);
+        JLabel title = new JLabel("Kollegiat:innen - Übersicht");
+        title.setFont(new Font("sans-serif",Font.PLAIN,14));
+
+
+        panel.add(title,constraints);
         constraints.gridy = 1;
-        panel.add(showBtn,constraints);
+        panel.add(kollegiatJList,constraints);
         constraints.gridy = 2;
-        panel.add(tutorPanel,constraints);
+        panel.add(showBtn,constraints);
         constraints.gridy = 3;
+        panel.add(tutorPanel,constraints);
+        constraints.gridy = 4;
         panel.add(betreuerPanel,constraints);
 
         constraints.gridy = 0;
@@ -121,11 +156,12 @@ public class AppController extends Controller {
         p.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         JLabel l = new JLabel("Antrag anzeigen");
+        gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridwidth = GridBagConstraints.PAGE_START;
         gbc.insets = new Insets(5,5,5,5);
         gbc.weightx = 1;
-        gbc.weighty = 0;
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         p.add(l,gbc);
 
         int id = Integer.decode(e.getActionCommand());
