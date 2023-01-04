@@ -1,6 +1,7 @@
 package controller;
 
 import core.controller.Controller;
+import core.global.Resources;
 import core.model.Entity;
 import core.view.View;
 import entity.Kollegiat;
@@ -152,6 +153,20 @@ public class AppController extends Controller {
     }
 
     public void show(ActionEvent e) {
+
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Anzeige fertig.");
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setIconImage(new ImageIcon(Resources.getImage("favicon-32x32.png")).getImage());
+        dialog.setResizable(false);
+
+        dialog.setSize(600,250);
+        // Dialog wird auf modal gesetzt
+        dialog.setModal(true);
+        dialog.setLocationByPlatform(true);
+        dialog.setLocationRelativeTo(this.view.frame);
+        // Wir lassen unseren Dialog anzeigen
+        dialog.setVisible(true);
 
         Kollegiat kollegiat;
 
