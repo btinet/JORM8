@@ -149,7 +149,7 @@ public class AppController extends Controller {
         constraints.weighty = 1;
         constraints.insets = new Insets(5,5,5,5);
 
-        JLabel title = new JLabel("Kollegiat:inn - Detailansicht");
+        JLabel title = new JLabel("Kollegiat:in - Detailansicht");
         JLabel subTitle = new JLabel("Übersicht der Anträge und Angaben.");
         subTitle.setForeground(new Color(67,67,64));
         title.setFont(new Font("sans-serif",Font.PLAIN,14));
