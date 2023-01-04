@@ -373,7 +373,19 @@ subgraph cluster_637428636 {
 	fillcolor="#ececec"
 	style=filled
    
-   AppController637428636[
+   AntragController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AntragController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AppController637428636[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)AppController</TD></TR>
 <HR/>
@@ -395,6 +407,54 @@ Controller712365749[
 <HR/>
 <TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ addLayoutComponent(c: Component, constraint: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FachController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FachController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+KollegiatController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)KollegiatController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LehrkraftController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LehrkraftController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThemaController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThemaController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -423,9 +483,15 @@ subgraph cluster_96801 {
 } 
 
 'edges    
+AppController637428636 -> Resources1176438574[label="show() -> getImage()"];
+Controller712365749 -> AntragController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> AppController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> FachController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> KollegiatController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> LehrkraftController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> Repository937501722[label="repository
 [0..1]"];
+Controller712365749 -> ThemaController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> View1632063596[label="view
 [0..1]"];
 Entity937501722 -> Antrag1298275357[arrowhead=none, arrowtail=empty, dir=both];
@@ -447,6 +513,7 @@ Repository937501722 -> QueryBuilder937501722[label="queryBuilder
 [0..1]"];
 Repository937501722 -> ThemaRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
 View1632063596 -> AppMenuBar1194705752[label="init() -> getComponent()"];
+View1632063596 -> Resources1176438574[label="init() -> getImage()"];
     
 }
 @enduml
