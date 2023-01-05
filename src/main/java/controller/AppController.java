@@ -143,7 +143,7 @@ public class AppController extends Controller {
         constraints.ipadx = 10;
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.gridwidth = 2;
-        constraints.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally. A weightx is needed for this to work.
+        constraints.fill = GridBagConstraints.HORIZONTAL; //Fill the panels horizontally.
         constraints.gridx = GridBagConstraints.RELATIVE;
         constraints.weightx = 1;
         constraints.weighty = 1;
@@ -192,14 +192,14 @@ public class AppController extends Controller {
         if(0 != id){
             Kollegiat kollegiat = (Kollegiat) getRepository().find(id,"KID");
             DetailPanel kollegiatDetail = new DetailPanel(kollegiat);
-
-            EntityManager em = new EntityManager(true);
-            em.persist(kollegiat,"KID");
-            em.persist(kollegiat,kollegiat.getKID(),"KID");
-
             kollegiatDetail.updateFields();
             p.add(kollegiatDetail,gbc);
 
+            EntityManager em = new EntityManager(true);
+            // Führt SQL INSERT aus:
+            em.persist(kollegiat,"KID");
+            // Führt SQL UPDATE aus:
+            em.persist(kollegiat,kollegiat.getKID(),"KID");
         } else {
             l.setText("Kein Element wurde ausgewählt");
         }

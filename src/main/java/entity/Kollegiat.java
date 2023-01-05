@@ -24,16 +24,18 @@ public class Kollegiat extends Entity {
         return Name;
     }
 
-    public void setName(String name) {
+    public Kollegiat setName(String name) {
         Name = name;
+        return this;
     }
 
     public String getVorname() {
         return Vorname;
     }
 
-    public void setVorname(String vorname) {
+    public Kollegiat setVorname(String vorname) {
         Vorname = vorname;
+        return this;
     }
 
     public Integer getTutorID() {
@@ -45,8 +47,9 @@ public class Kollegiat extends Entity {
         return (Lehrkraft) lehrkraftRepository.find(this.TutorID,"LID");
     }
 
-    public void setTutorID(Integer tutorID) {
+    public Kollegiat setTutorID(Integer tutorID) {
         TutorID = tutorID;
+        return this;
     }
 
     public Integer getBetreuerID() {
@@ -58,8 +61,9 @@ public class Kollegiat extends Entity {
         return (Lehrkraft) lehrkraftRepository.find(this.BetreuerID,"LID");
     }
 
-    public void setBetreuerID(Integer betreuerID) {
+    public Kollegiat setBetreuerID(Integer betreuerID) {
         BetreuerID = betreuerID;
+        return this;
     }
 
 }

@@ -58,9 +58,13 @@ public class EntityManager extends Repository {
     public void persist(Entity e, int id, String field){
         this.entity = e;
         try {
-            QueryBuilder qb = this.createQueryBuilder().andWhere(field + "=?");
-            int nextParameter = qb.addValues(field);
-            qb.setParameter(nextParameter,id).getUpdateQuery();
+            QueryBuilder qb = this.createQueryBuilder();
+
+            qb
+                    .setParameter(qb.addValues(field),id)
+                    .andWhere(field + "=?")
+                    .getUpdateQuery()
+            ;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
