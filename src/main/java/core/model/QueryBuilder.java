@@ -1,13 +1,11 @@
 package core.model;
 
-import com.google.protobuf.MapEntry;
 import com.sun.istack.internal.Nullable;
 import core.global.Database;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,11 +24,18 @@ public class QueryBuilder {
     private @Nullable String alias;
     private final StringBuilder projection = new StringBuilder();
 
+    private final StringBuilder insertion = new StringBuilder();
+    private final StringBuilder insertData = new StringBuilder();
+
+    private final StringBuilder table = new StringBuilder();
+
     private final StringBuilder condition = new StringBuilder();
 
     private final StringBuilder orderBy = new StringBuilder();
 
     private final StringBuilder query = new StringBuilder();
+
+
 
     private HashMap<Integer, String> stringParameters = new HashMap<>();
     private HashMap<Integer, Integer> integerParameters = new HashMap<>();
@@ -51,6 +56,69 @@ public class QueryBuilder {
         }
         return string;
     }
+
+    protected QueryBuilder insertOrm(){
+        this.insertion.append(this.getInsertColumns("id"));
+        this.insertData.append(this.getInsertData("id"));
+        return this;
+    }
+
+    protected QueryBuilder insertOrm(String primaryKey){
+        this.insertion.append(this.getInsertColumns(primaryKey));
+        this.insertData.append(this.getInsertData(primaryKey));
+        return this;
+    }
+
+    private String getInsertData(String primaryKey){
+        Field[] fields = this.entity.getClass().getDeclaredFields();
+        StringBuilder columnBuilder = new StringBuilder();
+        int i = 0;
+        for (Field field : fields) {
+            if(field.getModifiers() == Modifier.PROTECTED && !field.getName().equals(primaryKey)){
+                if(i != 0) {
+                    columnBuilder.append(",");
+                }
+                if(this.naturalCase){
+                    try {
+                        field.setAccessible(true);
+                        columnBuilder.append(field.get(this.entity));
+                        field.setAccessible(false);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                i++;
+            }
+        }
+        if(columnBuilder.length() > 0){
+            return columnBuilder.toString();
+        }
+        return "";
+    }
+
+    private String getInsertColumns(String primaryKey){
+        Field[] fields = this.entity.getClass().getDeclaredFields();
+        StringBuilder columnBuilder = new StringBuilder();
+        int i = 0;
+        for (Field field : fields) {
+            if(field.getModifiers() == Modifier.PROTECTED && !field.getName().equals(primaryKey)){
+                if(i != 0) {
+                    columnBuilder.append(",");
+                }
+                if(this.naturalCase){
+                    columnBuilder.append(field.getName());
+                } else {
+                    columnBuilder.append(this.generateSnakeTailString(field.getName()));
+                }
+                i++;
+            }
+        }
+        if(columnBuilder.length() > 0){
+            return columnBuilder.toString();
+        }
+        return "";
+    }
+
     private String getColumns(){
         Field[] fields = this.entity.getClass().getDeclaredFields();
         StringBuilder columnBuilder = new StringBuilder();
@@ -91,6 +159,15 @@ public class QueryBuilder {
         return this;
     }
 
+    protected QueryBuilder insertInto(){
+        if(this.naturalCase){
+            this.table.append(this.entity.getClass().getSimpleName());
+        } else {
+            this.query.append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
+        }
+        return this;
+    }
+
     protected QueryBuilder andWhere(String condition){
         if(0 != this.condition.length()){
             this.condition.append(" AND ");
@@ -126,6 +203,27 @@ public class QueryBuilder {
 
     protected QueryBuilder setParameter(Integer parameter, String value){
         this.stringParameters.put(parameter, value);
+        return this;
+    }
+
+    protected QueryBuilder getInsertQuery() throws SQLException {
+        this.query.append("INSERT INTO ");
+        if(this.naturalCase){
+            this.query.append(this.entity.getClass().getSimpleName());
+        } else {
+            this.query.append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
+        }
+        this.query.append(" ( ").append(this.insertion).append(" ) ");
+        this.query.append(" VALUES ");
+        this.query.append(" ( ").append(this.insertData).append(" ) ");
+
+        try {
+            this.statement = Database.getConnection().prepareStatement(this.query.toString());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("INSERT Query: " + this.query);
         return this;
     }
 
@@ -172,7 +270,7 @@ public class QueryBuilder {
                 }
             }
         }
-        System.out.println("Query: " + this.query);
+        System.out.println("SELECT Query: " + this.query);
         return this;
     }
 

@@ -3,6 +3,7 @@ package controller;
 import core.controller.Controller;
 import core.global.Resources;
 import core.model.Entity;
+import core.model.EntityManager;
 import core.model.ResultSorter;
 import core.view.View;
 import entity.Kollegiat;
@@ -190,7 +191,12 @@ public class AppController extends Controller {
 
         int id = Integer.decode(e.getActionCommand());
         if(0 != id){
-            DetailPanel kollegiatDetail = new DetailPanel((Kollegiat) getRepository().find(id,"KID"));
+            Kollegiat kollegiat = (Kollegiat) getRepository().find(id,"KID");
+            DetailPanel kollegiatDetail = new DetailPanel(kollegiat);
+
+            EntityManager em = new EntityManager(true);
+            em.persist(kollegiat,"KID");
+
             kollegiatDetail.updateFields();
             p.add(kollegiatDetail,gbc);
 
