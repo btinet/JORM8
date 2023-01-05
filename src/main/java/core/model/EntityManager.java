@@ -16,6 +16,7 @@ public class EntityManager extends Repository {
      */
     public void persist(Entity e){
         this.entity = e;
+        this.persist(e, "id");
     }
 
     /**

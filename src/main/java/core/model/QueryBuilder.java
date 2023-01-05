@@ -81,7 +81,7 @@ public class QueryBuilder {
                 if(this.naturalCase){
                     try {
                         field.setAccessible(true);
-                        columnBuilder.append(field.get(this.entity));
+                        columnBuilder.append("'").append(field.get(this.entity)).append("'");
                         field.setAccessible(false);
                     } catch (IllegalAccessException e) {
                         throw new RuntimeException(e);

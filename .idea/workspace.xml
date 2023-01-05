@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add entity manager">
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add entities">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/model/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/EntityManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
     </list>
@@ -29,7 +29,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
