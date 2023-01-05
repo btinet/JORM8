@@ -200,10 +200,10 @@ public class AppController extends Controller {
 
             EntityManager em = new EntityManager(true);
             // Führt SQL INSERT aus:
-            //em.persist(kollegiat,"KID");
+            em.persist(kollegiat,"kid");
             // Führt SQL UPDATE aus:
-            kollegiat.setName("UPDATE Datensatz");
-            //em.persist(kollegiat,kollegiat.getKID(),"KID");
+            kollegiat.setName("UPDATE");
+            em.persist(kollegiat,kollegiat.getKID(),"kid");
 
             HashMap<String, String> condition = new HashMap<>();
             condition.put("name","UPDATE Datensatz");
