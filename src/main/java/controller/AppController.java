@@ -134,7 +134,6 @@ public class AppController extends Controller {
         sp.setBorder(BorderFactory.createEmptyBorder());
         addLayoutComponent(sp,"Panel");
         setLayout("Panel");
-        System.out.println("AppController::index wurde aufgerufen!");
     }
 
     public void show(ActionEvent e) {
@@ -196,6 +195,7 @@ public class AppController extends Controller {
 
             EntityManager em = new EntityManager(true);
             em.persist(kollegiat,"KID");
+            em.persist(kollegiat,kollegiat.getKID(),"KID");
 
             kollegiatDetail.updateFields();
             p.add(kollegiatDetail,gbc);
@@ -211,10 +211,6 @@ public class AppController extends Controller {
 
         addLayoutComponent(sp,"Panel");
         setLayout("Panel");
-        System.out.println("AppController::show wurde aufgerufen!");
-
-
-
     }
 
 }

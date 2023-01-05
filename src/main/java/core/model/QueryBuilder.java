@@ -31,6 +31,8 @@ public class QueryBuilder {
 
     private final StringBuilder condition = new StringBuilder();
 
+    private final StringBuilder values = new StringBuilder();
+
     private final StringBuilder orderBy = new StringBuilder();
 
     private final StringBuilder query = new StringBuilder();
@@ -46,6 +48,9 @@ public class QueryBuilder {
         this.naturalCase = naturalCase;
         this.ucFirst = ucFirst;
         this.alias = alias;
+        System.out.println();
+        System.out.println("Neue SQL-Abfrage generieren:");
+        System.out.println("============================");
     }
 
     private String generateSnakeTailString(String value)
@@ -168,6 +173,41 @@ public class QueryBuilder {
         return this;
     }
 
+    protected int addValues(String primaryKey){
+        if(0 != this.values.length()){
+            this.values.append(" SET ");
+        }
+        int i = 1;
+        for (Field f: this.entity.getClass().getDeclaredFields()){
+            if(f.getModifiers() == Modifier.PROTECTED && !f.getName().equals(primaryKey)){
+                String fName;
+                if(i > 1) {
+                    this.values.append(", ");
+                }
+                if(this.naturalCase){
+                    fName = f.getName();
+                } else {
+                    fName = this.generateSnakeTailString(f.getName());
+                }
+                try {
+                    f.setAccessible(true);
+                    this.values.append(fName);
+                    if ("null".equals(f.get(this.entity))) {
+                        this.values.append("IS NULL");
+                    } else {
+                        this.values.append("=?");
+                        this.setParameter(i, f.get(this.entity).toString());
+                        i++;
+                    }
+                    f.setAccessible(false);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return i;
+    }
+
     protected QueryBuilder andWhere(String condition){
         if(0 != this.condition.length()){
             this.condition.append(" AND ");
@@ -198,11 +238,38 @@ public class QueryBuilder {
 
     protected QueryBuilder setParameter(Integer parameter, int value){
         this.integerParameters.put(parameter, value);
+        System.out.println(parameter + " ist " + value);
         return this;
     }
 
     protected QueryBuilder setParameter(Integer parameter, String value){
         this.stringParameters.put(parameter, value);
+        System.out.println(parameter + " ist " + value);
+        return this;
+    }
+
+    protected QueryBuilder getUpdateQuery() throws SQLException {
+        this.query.append("UPDATE ");
+        if(this.naturalCase){
+            this.query.append(this.entity.getClass().getSimpleName());
+        } else {
+            this.query.append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
+        }
+
+        this.query.append(" SET ");
+
+        this.query.append(this.values);
+        if(0 != this.condition.length()){
+            this.query.append(" WHERE ").append(this.condition);
+        }
+
+        try {
+            this.statement = Database.getConnection().prepareStatement(this.query.toString());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("UPDATE Query: " + this.query);
         return this;
     }
 

@@ -1,6 +1,9 @@
 package core.model;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.sql.SQLException;
+import java.util.Map;
 
 /**
  * Der Entity-Manager verwaltet die Entitäten der jeweiligen Relationen
@@ -43,6 +46,7 @@ public class EntityManager extends Repository {
      */
     public void persist(Entity e, int id){
         this.entity = e;
+        this.persist(e,id,"id");
     }
 
     /**
@@ -53,6 +57,13 @@ public class EntityManager extends Repository {
      */
     public void persist(Entity e, int id, String field){
         this.entity = e;
+        try {
+            QueryBuilder qb = this.createQueryBuilder().andWhere(field + "=?");
+            int nextParameter = qb.addValues(field);
+            qb.setParameter(nextParameter,id).getUpdateQuery();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     /**
