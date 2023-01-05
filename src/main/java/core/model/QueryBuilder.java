@@ -9,6 +9,7 @@ import java.lang.reflect.Modifier;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -238,13 +239,13 @@ public class QueryBuilder {
 
     protected QueryBuilder setParameter(Integer parameter, int value){
         this.integerParameters.put(parameter, value);
-        System.out.println(parameter + " ist " + value);
+        System.out.println(parameter + ". ? ist: " + value);
         return this;
     }
 
     protected QueryBuilder setParameter(Integer parameter, String value){
         this.stringParameters.put(parameter, value);
-        System.out.println(parameter + " ist " + value);
+        System.out.println(parameter + ". ? ist: " + value);
         return this;
     }
 
@@ -269,11 +270,75 @@ public class QueryBuilder {
             throw new RuntimeException(e);
         }
 
+        if(!this.stringParameters.isEmpty()){
+            for(Map.Entry<Integer, String> entry: this.stringParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), "null")){
+                    this.statement.setString(entry.getKey(),entry.getValue());
+                }
+            }
+        }
+
+        if(!this.integerParameters.isEmpty()){
+            for(Map.Entry<Integer, Integer> entry: this.integerParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), 0)){
+                    this.statement.setInt(entry.getKey(),entry.getValue());
+                }
+            }
+        }
+
         System.out.println("UPDATE Query: " + this.query);
         return this;
     }
 
+    protected QueryBuilder getRemoveQuery(){
+        this.query.append("DELETE FROM ");
+
+        if(this.naturalCase){
+            this.query.append(this.entity.getClass().getSimpleName());
+        } else {
+            this.query.append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
+        }
+
+        if(0 != this.condition.length()){
+            this.query.append(" WHERE ").append(this.condition);
+        }
+
+        try {
+            this.statement = Database.getConnection().prepareStatement(this.query.toString());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(!this.stringParameters.isEmpty()){
+            for(Map.Entry<Integer, String> entry: this.stringParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), "null")){
+                    try {
+                        this.statement.setString(entry.getKey(),entry.getValue());
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }
+
+        if(!this.integerParameters.isEmpty()){
+            for(Map.Entry<Integer, Integer> entry: this.integerParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), 0)){
+                    try {
+                        this.statement.setInt(entry.getKey(),entry.getValue());
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }
+
+        System.out.println("DELETE Query: " + this.query);
+        return this;
+    }
+
     protected QueryBuilder getInsertQuery() throws SQLException {
+        // TODO: Parameter nicht in das SQL-Statement aufnehmen!
         this.query.append("INSERT INTO ");
         if(this.naturalCase){
             this.query.append(this.entity.getClass().getSimpleName());
@@ -288,6 +353,22 @@ public class QueryBuilder {
             this.statement = Database.getConnection().prepareStatement(this.query.toString());
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+
+        if(!this.stringParameters.isEmpty()){
+            for(Map.Entry<Integer, String> entry: this.stringParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), "null")){
+                    this.statement.setString(entry.getKey(),entry.getValue());
+                }
+            }
+        }
+
+        if(!this.integerParameters.isEmpty()){
+            for(Map.Entry<Integer, Integer> entry: this.integerParameters.entrySet()){
+                if(!Objects.equals(entry.getValue(), 0)){
+                    this.statement.setInt(entry.getKey(),entry.getValue());
+                }
+            }
         }
 
         System.out.println("INSERT Query: " + this.query);
@@ -339,6 +420,16 @@ public class QueryBuilder {
         }
         System.out.println("SELECT Query: " + this.query);
         return this;
+    }
+
+    protected void getPersistResult() {
+        try {
+            Boolean done = this.statement.execute();
+            System.out.println("Anzahl betroffener Tupel: " + this.statement.getUpdateCount());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     protected Entity getOnOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {

@@ -20,6 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AppController extends Controller {
 
@@ -80,7 +81,7 @@ public class AppController extends Controller {
 
                             click.addActionListener((new AppController(view)::show));
                             click.doClick();
-                            System.out.println("Double-clicked on: " + o);
+                            System.out.println("Doppelklick auf Listenpunkt: " + o);
                         }
 
                     }
@@ -199,7 +200,14 @@ public class AppController extends Controller {
             // Führt SQL INSERT aus:
             em.persist(kollegiat,"KID");
             // Führt SQL UPDATE aus:
+            kollegiat.setName("UPDATE Datensatz");
             em.persist(kollegiat,kollegiat.getKID(),"KID");
+
+            HashMap<String, String> condition = new HashMap<>();
+            condition.put("name","UPDATE Datensatz");
+            Kollegiat testKollegiat = (Kollegiat) getRepository().findOneBy(condition);
+            em.remove(testKollegiat,testKollegiat.getKID(),"KID");
+
         } else {
             l.setText("Kein Element wurde ausgewählt");
         }

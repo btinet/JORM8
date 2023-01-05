@@ -33,6 +33,7 @@ public class EntityManager extends Repository {
             this.createQueryBuilder()
                     .insertOrm(field)
                     .getInsertQuery()
+                    .getPersistResult()
             ;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -60,10 +61,12 @@ public class EntityManager extends Repository {
         try {
             QueryBuilder qb = this.createQueryBuilder();
 
+            Integer nextParameter = qb.addValues(field);
             qb
-                    .setParameter(qb.addValues(field),id)
                     .andWhere(field + "=?")
+                    .setParameter(nextParameter,id)
                     .getUpdateQuery()
+                    .getPersistResult()
             ;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -77,6 +80,7 @@ public class EntityManager extends Repository {
      */
     public void remove(Entity e, int id){
         this.entity = e;
+        this.remove(e,id, "id");
     }
 
     /**
@@ -87,15 +91,14 @@ public class EntityManager extends Repository {
      */
     public void remove(Entity e, int id, String field){
         this.entity = e;
+        QueryBuilder qb = this.createQueryBuilder();
+
+        qb
+                .andWhere(field + "=?")
+                .setParameter(1,id)
+                .getRemoveQuery()
+                .getPersistResult()
+        ;
     }
-
-    protected void insert(){
-
-    }
-
-    protected void update(){
-
-    }
-
 
 }

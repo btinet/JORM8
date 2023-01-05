@@ -12,7 +12,8 @@
     <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update QueryBuilder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/EntityManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
