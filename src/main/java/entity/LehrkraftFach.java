@@ -4,9 +4,9 @@ import core.model.Entity;
 
 public class LehrkraftFach extends Entity {
 
-    protected Integer LFID;
-    protected Integer LID;
-    protected Integer FID;
+    protected Integer lfid;
+    protected Integer lid;
+    protected Integer fid;
 
     @Override
     public String toString(){
@@ -14,22 +14,22 @@ public class LehrkraftFach extends Entity {
     }
 
     public Integer getLFID() {
-        return LFID;
+        return lfid;
     }
 
     public Integer getLID() {
-        return LID;
+        return lid;
     }
 
-    public void setLID(Integer LID) {
-        this.LID = LID;
+    public void setLID(Integer lid) {
+        this.lid = lid;
     }
 
     public Integer getFID() {
-        return FID;
+        return fid;
     }
 
-    public void setFID(Integer FID) {
-        this.FID = FID;
+    public void setFID(Integer fid) {
+        this.fid = fid;
     }
 }

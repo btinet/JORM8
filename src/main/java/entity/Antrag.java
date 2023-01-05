@@ -4,11 +4,11 @@ import core.model.Entity;
 
 public class Antrag extends Entity {
 
-    protected Integer AID;
+    protected Integer aid;
     protected Boolean alsEinzelpruefung;
     protected String genehmigtAm;
-    protected Integer TID;
-    protected Integer KID;
+    protected Integer tid;
+    protected Integer kid;
 
     @Override
     public String toString() {
@@ -16,7 +16,7 @@ public class Antrag extends Entity {
     }
 
     public Integer getAID() {
-        return AID;
+        return aid;
     }
 
     public Boolean getAlsEinzelpruefung() {
@@ -36,19 +36,19 @@ public class Antrag extends Entity {
     }
 
     public Integer getTID() {
-        return TID;
+        return tid;
     }
 
     public void setTID(Integer TID) {
-        this.TID = TID;
+        this.tid = TID;
     }
 
     public Integer getKID() {
-        return KID;
+        return kid;
     }
 
     public void setKID(Integer KID) {
-        this.KID = KID;
+        this.kid = KID;
     }
 }
 

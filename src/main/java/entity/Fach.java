@@ -4,8 +4,8 @@ import core.model.Entity;
 
 public class Fach extends Entity {
 
-    protected Integer FID;
-    protected String Bezeichnung;
+    protected Integer fid;
+    protected String bezeichnung;
 
     @Override
     public String toString(){
@@ -13,14 +13,14 @@ public class Fach extends Entity {
     }
 
     public Integer getFID() {
-        return FID;
+        return fid;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
 
     public void setBezeichnung(String bezeichnung) {
-        Bezeichnung = bezeichnung;
+        bezeichnung = bezeichnung;
     }
 }

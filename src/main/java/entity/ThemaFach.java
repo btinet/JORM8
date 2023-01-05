@@ -4,9 +4,9 @@ import core.model.Entity;
 
 public class ThemaFach extends Entity {
 
-    protected Integer TFID;
-    protected Integer TID;
-    protected Integer FID;
+    protected Integer tfid;
+    protected Integer tid;
+    protected Integer fid;
     protected Boolean istRefFach;
 
     @Override
@@ -15,23 +15,23 @@ public class ThemaFach extends Entity {
     }
 
     public Integer getTFID() {
-        return TFID;
+        return tfid;
     }
 
     public Integer getTID() {
-        return TID;
+        return tid;
     }
 
-    public void setTID(Integer TID) {
-        this.TID = TID;
+    public void setTID(Integer tid) {
+        this.tid = tid;
     }
 
     public Integer getFID() {
-        return FID;
+        return fid;
     }
 
-    public void setFID(Integer FID) {
-        this.FID = FID;
+    public void setFID(Integer fid) {
+        this.fid = fid;
     }
 
     public Boolean getIstRefFach() {

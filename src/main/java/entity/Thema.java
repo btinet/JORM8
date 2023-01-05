@@ -4,10 +4,10 @@ import core.model.Entity;
 
 public class Thema extends Entity {
 
-    protected Integer TID;
-    protected String Leitfrage;
-    protected String Erlaeuterung;
-    protected String PruefJahr;
+    protected Integer tid;
+    protected String leitfrage;
+    protected String erlaeuterung;
+    protected String pruefJahr;
 
     @Override
     public String toString(){
@@ -15,30 +15,30 @@ public class Thema extends Entity {
     }
 
     public Integer getTID() {
-        return TID;
+        return tid;
     }
 
     public String getLeitfrage() {
-        return Leitfrage;
+        return leitfrage;
     }
 
     public void setLeitfrage(String leitfrage) {
-        Leitfrage = leitfrage;
+        this.leitfrage = leitfrage;
     }
 
     public String getErlaeuterung() {
-        return Erlaeuterung;
+        return erlaeuterung;
     }
 
     public void setErlaeuterung(String erlaeuterung) {
-        Erlaeuterung = erlaeuterung;
+        this.erlaeuterung = erlaeuterung;
     }
 
     public String getPruefJahr() {
-        return PruefJahr;
+        return pruefJahr;
     }
 
     public void setPruefJahr(String pruefJahr) {
-        PruefJahr = pruefJahr;
+        this.pruefJahr = pruefJahr;
     }
 }

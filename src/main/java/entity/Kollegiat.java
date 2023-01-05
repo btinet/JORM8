@@ -5,11 +5,11 @@ import repository.LehrkraftRepository;
 
 public class Kollegiat extends Entity {
 
-    protected Integer KID;
-    protected String Name;
-    protected String Vorname;
-    protected Integer TutorID;
-    protected Integer BetreuerID;
+    protected Integer kid;
+    protected String name;
+    protected String vorname;
+    protected Integer tutorId;
+    protected Integer betreuerId;
 
     @Override
     public String toString(){
@@ -17,52 +17,52 @@ public class Kollegiat extends Entity {
     }
 
     public Integer getKID() {
-        return KID;
+        return kid;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public Kollegiat setName(String name) {
-        Name = name;
+        this.name = name;
         return this;
     }
 
     public String getVorname() {
-        return Vorname;
+        return vorname;
     }
 
     public Kollegiat setVorname(String vorname) {
-        Vorname = vorname;
+        this.vorname = vorname;
         return this;
     }
 
     public Integer getTutorID() {
-        return TutorID;
+        return tutorId;
     }
 
     public Lehrkraft getTutor(){
         LehrkraftRepository lehrkraftRepository = new LehrkraftRepository(true);
-        return (Lehrkraft) lehrkraftRepository.find(this.TutorID,"LID");
+        return (Lehrkraft) lehrkraftRepository.find(this.tutorId,"lid");
     }
 
     public Kollegiat setTutorID(Integer tutorID) {
-        TutorID = tutorID;
+        this.tutorId = tutorID;
         return this;
     }
 
     public Integer getBetreuerID() {
-        return BetreuerID;
+        return betreuerId;
     }
 
     public Lehrkraft getBetreuer(){
         LehrkraftRepository lehrkraftRepository = new LehrkraftRepository(true);
-        return (Lehrkraft) lehrkraftRepository.find(this.BetreuerID,"LID");
+        return (Lehrkraft) lehrkraftRepository.find(this.betreuerId,"lid");
     }
 
     public Kollegiat setBetreuerID(Integer betreuerID) {
-        BetreuerID = betreuerID;
+        betreuerId = betreuerID;
         return this;
     }
 

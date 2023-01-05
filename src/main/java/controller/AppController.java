@@ -30,7 +30,7 @@ public class AppController extends Controller {
 
     public void index(ActionEvent e) {
         DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
-        ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("Name","asc").getMap());
+        ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -45,6 +45,7 @@ public class AppController extends Controller {
 
         JButton showBtn = new JButton("Details...");
         showBtn.addActionListener((new AppController(view)::show));
+        showBtn.setEnabled(false);
         showBtn.setActionCommand("0");
 
         JPanel panel = new JPanel(new GridBagLayout());
@@ -60,6 +61,7 @@ public class AppController extends Controller {
                         Kollegiat kollegiat = (Kollegiat) kollegiatJList.getSelectedValue();
                         showBtn.setActionCommand(String.valueOf(kollegiat.getKID()));
                         kollegiatDetail.setKollegiat(kollegiat);
+                        showBtn.setEnabled(true);
                     }
 
                 }
@@ -191,34 +193,35 @@ public class AppController extends Controller {
 
         int id = Integer.decode(e.getActionCommand());
         if(0 != id){
-            Kollegiat kollegiat = (Kollegiat) getRepository().find(id,"KID");
+            Kollegiat kollegiat = (Kollegiat) getRepository().find(id,"kid");
             DetailPanel kollegiatDetail = new DetailPanel(kollegiat);
             kollegiatDetail.updateFields();
             p.add(kollegiatDetail,gbc);
 
             EntityManager em = new EntityManager(true);
             // Führt SQL INSERT aus:
-            em.persist(kollegiat,"KID");
+            //em.persist(kollegiat,"KID");
             // Führt SQL UPDATE aus:
             kollegiat.setName("UPDATE Datensatz");
-            em.persist(kollegiat,kollegiat.getKID(),"KID");
+            //em.persist(kollegiat,kollegiat.getKID(),"KID");
 
             HashMap<String, String> condition = new HashMap<>();
             condition.put("name","UPDATE Datensatz");
             Kollegiat testKollegiat = (Kollegiat) getRepository().findOneBy(condition);
-            em.remove(testKollegiat,testKollegiat.getKID(),"KID");
+            //em.remove(testKollegiat,testKollegiat.getKID(),"KID");
+
+            main.add(p,constraints);
+            JScrollPane sp = new JScrollPane(main);
+            sp.setBorder(BorderFactory.createEmptyBorder());
+
+            addLayoutComponent(sp,"Panel");
+            setLayout("Panel");
 
         } else {
             l.setText("Kein Element wurde ausgewählt");
+            this.redirectToController(new AppController(this.view)::index);
         }
 
-
-        main.add(p,constraints);
-        JScrollPane sp = new JScrollPane(main);
-        sp.setBorder(BorderFactory.createEmptyBorder());
-
-        addLayoutComponent(sp,"Panel");
-        setLayout("Panel");
     }
 
 }

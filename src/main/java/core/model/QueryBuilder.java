@@ -427,7 +427,8 @@ public class QueryBuilder {
             Boolean done = this.statement.execute();
             System.out.println("Anzahl betroffener Tupel: " + this.statement.getUpdateCount());
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
+            System.err.println("Fehlercode: " + e.getSQLState());
         }
 
     }
@@ -478,11 +479,11 @@ public class QueryBuilder {
     protected ArrayList<Entity> getResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         this.statement.executeQuery();
-        ResultSet result = null;
+        ResultSet result;
         result = this.statement.getResultSet();
         ArrayList<Entity> list = new ArrayList<>();
 
-        Entity object = null;
+        Entity object;
 
         while (result.next()) {
 

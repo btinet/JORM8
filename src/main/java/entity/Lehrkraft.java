@@ -4,10 +4,10 @@ import core.model.Entity;
 
 public class Lehrkraft extends Entity {
 
-    protected Integer LID;
-    protected String Anrede;
-    protected String Name;
-    protected String Vorname;
+    protected Integer lid;
+    protected String anrede;
+    protected String name;
+    protected String vorname;
 
     @Override
     public String toString(){
@@ -15,30 +15,30 @@ public class Lehrkraft extends Entity {
     }
 
     public Integer getLID() {
-        return LID;
+        return lid;
     }
 
     public String getAnrede() {
-        return Anrede;
+        return anrede;
     }
 
     public void setAnrede(String anrede) {
-        Anrede = anrede;
+        this.anrede = anrede;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getVorname() {
-        return Vorname;
+        return vorname;
     }
 
     public void setVorname(String vorname) {
-        Vorname = vorname;
+        this.vorname = vorname;
     }
 }
