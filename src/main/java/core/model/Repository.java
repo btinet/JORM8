@@ -112,12 +112,7 @@ public abstract class Repository {
     public ArrayList<? extends Entity> findAll(){
         try {
             try {
-                return this.createQueryBuilder()
-                        .selectOrm()
-                        .getQuery()
-                        .getResult()
-                        ;
-
+                return this.createQueryBuilder().selectOrm().getQuery().getResult();
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
                      IllegalAccessException e) {
                 throw new RuntimeException(e);
