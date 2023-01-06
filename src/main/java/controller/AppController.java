@@ -32,7 +32,8 @@ public class AppController extends Controller {
         DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
-        ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
+        Kollegiat kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
+        System.out.println(kJoin);
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

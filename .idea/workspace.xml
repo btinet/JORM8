@@ -9,8 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update entities">
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/KollegiatRepository_structure.puml" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update query builder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
@@ -152,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672949549132</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update query builder">
+      <created>1673008495923</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673008495923</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,7 +179,8 @@
     <MESSAGE value="update view" />
     <MESSAGE value="update QueryBuilder" />
     <MESSAGE value="update entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="update entities" />
+    <MESSAGE value="update query builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="update query builder" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

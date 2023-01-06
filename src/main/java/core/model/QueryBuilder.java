@@ -19,7 +19,7 @@ public class QueryBuilder {
 
     private Boolean naturalCase;
     private Boolean ucFirst;
-    private @Nullable String alias;
+    private String alias;
     private final StringBuilder projection = new StringBuilder();
 
     private final StringBuilder insertion = new StringBuilder();
@@ -47,7 +47,7 @@ public class QueryBuilder {
     private HashMap<Integer, Integer> integerParameters = new HashMap<>();
 
 
-    public QueryBuilder (Boolean naturalCase, Boolean ucFirst, Entity entity, @Nullable String alias) {
+    public QueryBuilder (Boolean naturalCase, Boolean ucFirst, Entity entity, String alias) {
         this.entity = entity;
         this.naturalCase = naturalCase;
         this.ucFirst = ucFirst;
