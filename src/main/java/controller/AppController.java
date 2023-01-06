@@ -19,8 +19,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AppController extends Controller {
 
@@ -32,8 +34,12 @@ public class AppController extends Controller {
         DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
-        Kollegiat kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
-        System.out.println(kJoin);
+        ArrayList<HashMap<String, String>> kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
+        for(HashMap<String, String> item : kJoin){
+            System.err.println("Vorname: " + item.get("vorname"));
+            System.err.println("Nachname: " + item.get("name"));
+            System.err.println("Leitfrage: " + item.get("leitfrage"));
+        }
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

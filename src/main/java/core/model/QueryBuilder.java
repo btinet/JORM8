@@ -47,7 +47,7 @@ public class QueryBuilder {
     private HashMap<Integer, Integer> integerParameters = new HashMap<>();
 
 
-    public QueryBuilder (Boolean naturalCase, Boolean ucFirst, Entity entity, String alias) {
+    public QueryBuilder (Boolean naturalCase, Boolean ucFirst, Entity entity,@Nullable String alias) {
         this.entity = entity;
         this.naturalCase = naturalCase;
         this.ucFirst = ucFirst;
@@ -432,6 +432,10 @@ public class QueryBuilder {
             this.query.append(" FROM ").append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
         }
 
+        if(null != this.alias){
+            this.query.append(" ").append(this.alias);
+        }
+
         if(0 != this.joins.length()){
             this.query.append(this.joins);
         }
@@ -488,6 +492,23 @@ public class QueryBuilder {
 
     }
 
+    public ArrayList<HashMap<String, String>> getListResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+        this.statement.executeQuery();
+        ResultSet result = this.statement.getResultSet();
+        ResultSetMetaData metaData = result.getMetaData();
+
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        while (result.next()) {
+            HashMap<String, String> row = new HashMap<>(metaData.getColumnCount());
+            for (int i = 1; i <= metaData.getColumnCount();i++) {
+                row.put(metaData.getColumnName(i),result.getObject(i).toString());
+            }
+            list.add(row);
+        }
+        return list;
+    }
+
     public Entity getOnOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         this.statement.setMaxRows(1);
@@ -505,11 +526,15 @@ public class QueryBuilder {
             for (Field field : this.entity.getClass().getDeclaredFields()) {
                 if (field.getModifiers() == Modifier.PROTECTED) {
                     String fieldName = "";
+
+
+
                     if(!this.naturalCase){
-                        fieldName = this.generateSnakeTailString(field.getName());
+                        fieldName += this.generateSnakeTailString(field.getName());
                     } else {
-                        fieldName = field.getName();
+                        fieldName += field.getName();
                     }
+
 
                     field.setAccessible(true);
                     if(field.getType().getSimpleName().equals("int")){

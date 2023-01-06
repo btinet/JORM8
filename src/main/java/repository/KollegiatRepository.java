@@ -4,26 +4,27 @@ import core.model.Repository;
 import entity.Kollegiat;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class KollegiatRepository extends Repository {
 
     public KollegiatRepository(Boolean naturalCase) {
         super(naturalCase);
-        setEntity(new Kollegiat());
-        setAlias("k");
+        this.entity = new Kollegiat();
     }
 
-    public Kollegiat getKollegiatJoinAntrag(int kid) {
+    public ArrayList<HashMap<String, String>> getKollegiatJoinAntrag(int kid) {
+        this.setAlias("k");
 
         try {
-            return (Kollegiat) this.createQueryBuilder()
-                  .select("k.name, k.vorname, COUNT(a.aid) AS 'anzahl' ")
-                  .innerJoin("Antrag a","k.kid","a.kid")
-                  .andWhere("k.kid = ?")
-                  .setParameter(1,kid)
-                  .getQuery()
-                    .getOnOrNullResult()
-          ;
+            return  this.createQueryBuilder()
+                    .select("k.name, k.vorname, t.leitfrage")
+                    .innerJoin("Antrag a","kid")
+                    .innerJoin("Thema t","tid")
+                    .getQuery()
+                    .getListResult()
+            ;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {
