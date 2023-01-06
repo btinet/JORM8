@@ -106,6 +106,12 @@ public class DetailPanel extends JPanel {
     public void updateFields(){
         this.fieldVorname.setText(this.kollegiat.getVorname());
         this.fieldNachname.setText(this.kollegiat.getName());
+
+        if(this.kollegiat.getBetreuer().isBenutzer()){
+            this.fieldBetreuer.setForeground(new Color(180,64,64));
+        } else {
+            this.fieldBetreuer.setForeground(new Color(0,0,0));
+        }
         this.fieldTutor.setText(this.kollegiat.getTutor().toString());
         this.fieldBetreuer.setText(this.kollegiat.getBetreuer().toString());
     }

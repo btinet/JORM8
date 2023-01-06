@@ -1,6 +1,9 @@
 package entity;
 
 import core.model.Entity;
+import repository.BenutzerRepository;
+
+import java.util.HashMap;
 
 public class Lehrkraft extends Entity {
 
@@ -40,5 +43,14 @@ public class Lehrkraft extends Entity {
 
     public void setVorname(String vorname) {
         this.vorname = vorname;
+    }
+
+    public Boolean isBenutzer(){
+
+        HashMap<String, String> condition = new HashMap<>();
+        condition.put("lid",this.lid.toString());
+
+        BenutzerRepository benutzerRepository = new BenutzerRepository(true);
+        return null != benutzerRepository.findOneBy(condition);
     }
 }

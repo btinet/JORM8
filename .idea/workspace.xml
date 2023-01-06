@@ -10,17 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update entities">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/inhalt.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Benutzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/BenutzerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Antrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Antrag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Fach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Fach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Kollegiat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/Resources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Lehrkraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Lehrkraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/LehrkraftFach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/LehrkraftFach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Thema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Thema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ThemaFach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/ThemaFach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,8 +71,8 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="controller" />
       <recent name="repository" />
+      <recent name="controller" />
       <recent name="entity" />
     </key>
   </component>
@@ -151,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672948050380</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update entities">
+      <created>1672949549132</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672949549132</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
