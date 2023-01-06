@@ -25,12 +25,14 @@ import java.util.HashMap;
 public class AppController extends Controller {
 
     public AppController(View view){
-        super(view, new KollegiatRepository(true));
+        super(view,new KollegiatRepository(true));
     }
 
     public void index(ActionEvent e) {
         DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
+
+        ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

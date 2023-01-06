@@ -6,10 +6,7 @@ import core.global.Database;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +31,13 @@ public class QueryBuilder {
 
     private final StringBuilder values = new StringBuilder();
 
+    private final StringBuilder joins = new StringBuilder();
+
     private final StringBuilder orderBy = new StringBuilder();
+
+    private final StringBuilder groupBy = new StringBuilder();
+
+    private final StringBuilder having = new StringBuilder();
 
     private final StringBuilder query = new StringBuilder();
 
@@ -63,13 +66,13 @@ public class QueryBuilder {
         return string;
     }
 
-    protected QueryBuilder insertOrm(){
+    public QueryBuilder insertOrm(){
         this.insertion.append(this.getInsertColumns("id"));
         this.insertData.append(this.getInsertData("id"));
         return this;
     }
 
-    protected QueryBuilder insertOrm(String primaryKey){
+    public QueryBuilder insertOrm(String primaryKey){
         this.insertion.append(this.getInsertColumns(primaryKey));
         this.insertData.append(this.getInsertData(primaryKey));
         return this;
@@ -155,17 +158,17 @@ public class QueryBuilder {
         return "";
     }
 
-    protected QueryBuilder select(String fields) {
+    public QueryBuilder select(String fields) {
         this.projection.append(fields);
         return this;
     }
 
-    protected QueryBuilder selectOrm() {
+    public QueryBuilder selectOrm() {
         this.projection.append(this.getColumns());
         return this;
     }
 
-    protected QueryBuilder insertInto(){
+    public QueryBuilder insertInto(){
         if(this.naturalCase){
             this.table.append(this.entity.getClass().getSimpleName());
         } else {
@@ -174,7 +177,24 @@ public class QueryBuilder {
         return this;
     }
 
-    protected int addValues(String primaryKey){
+    public QueryBuilder innerJoin(String table,String key){
+        this.joins.append(" INNER JOIN ").append(table).append(" USING (").append(key).append(")");
+        return this;
+    }
+
+    public QueryBuilder innerJoin(String table,String left, String right){
+        this.joins.append(" INNER JOIN ")
+                .append(table)
+                .append(" ON (")
+                .append(left)
+                .append(" = ")
+                .append(right)
+                .append(")")
+        ;
+        return this;
+    }
+
+    public int addValues(String primaryKey){
         if(0 != this.values.length()){
             this.values.append(" SET ");
         }
@@ -209,7 +229,7 @@ public class QueryBuilder {
         return i;
     }
 
-    protected QueryBuilder andWhere(String condition){
+    public QueryBuilder andWhere(String condition){
         if(0 != this.condition.length()){
             this.condition.append(" AND ");
         }
@@ -217,7 +237,7 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder orWhere(String condition){
+    public QueryBuilder orWhere(String condition){
         if(0 != this.condition.length()){
             this.condition.append(" OR ");
         }
@@ -225,7 +245,31 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder orderBy(HashMap<String, String> orderBy){
+    public QueryBuilder groupBy(String field){
+        if(0 != this.groupBy.length()){
+            this.groupBy.append(", ");
+        }
+        this.groupBy.append(field);
+        return this;
+    }
+
+    public QueryBuilder andHaving(String condition){
+        if(0 != this.having.length()){
+            this.having.append(" AND ");
+        }
+        this.having.append(condition);
+        return this;
+    }
+
+    public QueryBuilder orHaving(String condition){
+        if(0 != this.having.length()){
+            this.having.append(" OR ");
+        }
+        this.having.append(condition);
+        return this;
+    }
+
+    public QueryBuilder orderBy(HashMap<String, String> orderBy){
         int i = 1;
         for(Map.Entry<String, String> entry: orderBy.entrySet()){
             this.orderBy.append(entry.getKey()).append(" ").append(entry.getValue().toUpperCase());
@@ -237,19 +281,19 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder setParameter(Integer parameter, int value){
+    public QueryBuilder setParameter(Integer parameter, int value){
         this.integerParameters.put(parameter, value);
         System.out.println(parameter + ". ? ist: " + value);
         return this;
     }
 
-    protected QueryBuilder setParameter(Integer parameter, String value){
+    public QueryBuilder setParameter(Integer parameter, String value){
         this.stringParameters.put(parameter, value);
         System.out.println(parameter + ". ? ist: " + value);
         return this;
     }
 
-    protected QueryBuilder getUpdateQuery() throws SQLException {
+    public QueryBuilder getUpdateQuery() throws SQLException {
         this.query.append("UPDATE ");
         if(this.naturalCase){
             this.query.append(this.entity.getClass().getSimpleName());
@@ -290,7 +334,7 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder getRemoveQuery(){
+    public QueryBuilder getRemoveQuery(){
         this.query.append("DELETE FROM ");
 
         if(this.naturalCase){
@@ -337,7 +381,7 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder getInsertQuery() throws SQLException {
+    public QueryBuilder getInsertQuery() throws SQLException {
         // TODO: Parameter nicht in das SQL-Statement aufnehmen!
         this.query.append("INSERT INTO ");
         if(this.naturalCase){
@@ -375,7 +419,7 @@ public class QueryBuilder {
         return this;
     }
 
-    protected QueryBuilder getQuery() throws SQLException {
+    public QueryBuilder getQuery() throws SQLException {
         this.query.append("SELECT ");
 
         if(0 != this.projection.length()){
@@ -388,9 +432,20 @@ public class QueryBuilder {
             this.query.append(" FROM ").append(this.generateSnakeTailString(this.entity.getClass().getSimpleName()));
         }
 
+        if(0 != this.joins.length()){
+            this.query.append(this.joins);
+        }
 
         if(0 != this.condition.length()){
             this.query.append(" WHERE ").append(this.condition);
+        }
+
+        if(0 != this.groupBy.length()){
+            this.query.append(" GROUP BY ").append(this.groupBy);
+        }
+
+        if(0 != this.having.length()){
+            this.query.append(" HAVING ").append(this.having);
         }
 
         if(0 != this.orderBy.length()){
@@ -422,7 +477,7 @@ public class QueryBuilder {
         return this;
     }
 
-    protected void getPersistResult() {
+    public void getPersistResult() {
         try {
             Boolean done = this.statement.execute();
             System.out.println("Anzahl betroffener Tupel: " + this.statement.getUpdateCount());
@@ -433,12 +488,13 @@ public class QueryBuilder {
 
     }
 
-    protected Entity getOnOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public Entity getOnOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         this.statement.setMaxRows(1);
         this.statement.executeQuery();
         ResultSet result;
         result = this.statement.getResultSet();
+        ResultSetMetaData metaData = result.getMetaData();
 
         Entity object = null;
 
@@ -470,13 +526,15 @@ public class QueryBuilder {
                     }
                     field.setAccessible(false);
 
+
+
                 }
             }
         }
         return object;
     }
 
-    protected ArrayList<Entity> getResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public ArrayList<Entity> getResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         this.statement.executeQuery();
         ResultSet result;
