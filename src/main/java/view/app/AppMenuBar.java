@@ -1,6 +1,7 @@
 package view.app;
 
 import controller.AppController;
+import controller.AuthenticationController;
 import core.global.Resources;
 import core.view.View;
 
@@ -12,6 +13,12 @@ public class AppMenuBar {
     public JMenuBar getComponent(View view){
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(224,224,224));
+
+        JMenu menu0 = new JMenu("Datei");
+        JMenuItem menu0_1 = new JMenuItem("abmelden", new ImageIcon(Resources.getImage("icons8_view_all_16px.png")));
+        menu0_1.addActionListener((new AuthenticationController(view)::logoff));
+        menu0.add(menu0_1);
+
         JMenu menu1 = new JMenu("Kollegiat:innen");
         JMenu menu2 = new JMenu("Lehrkräfte");
         JMenuItem menu2_1 = new JMenuItem("Auflisten", new ImageIcon(Resources.getImage("icons8_lips_16px.png")));
@@ -24,6 +31,7 @@ public class AppMenuBar {
         menu1.add(menu1_1);
         menu1.add(menu1_2);
         menu2.add(menu2_1);
+        menuBar.add(menu0);
         menuBar.add(menu1);
         menuBar.add(menu2);
 

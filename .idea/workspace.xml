@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add result as list method">
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/app/LoginMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +69,9 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="repository" />
       <recent name="controller" />
+      <recent name="view.app" />
+      <recent name="repository" />
       <recent name="entity" />
     </key>
   </component>
@@ -177,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673071398202</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update controller">
+      <created>1673073111522</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673073111522</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,7 +212,8 @@
     <MESSAGE value="update entities" />
     <MESSAGE value="update query builder" />
     <MESSAGE value="add result as list method" />
-    <option name="LAST_COMMIT_MESSAGE" value="add result as list method" />
+    <MESSAGE value="update controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="update controller" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

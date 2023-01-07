@@ -3,6 +3,7 @@ package core.view;
 import core.global.Resources;
 import javafx.scene.image.Image;
 import view.app.AppMenuBar;
+import view.app.LoginMenuBar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,15 +37,15 @@ public class View {
         this.cardLayout = new CardLayout();
         this.frame.setLayout(this.cardLayout);
 
-        // JPane hinzufügen
+        // JPanel hinzufügen
         JPanel jPanel = new JPanel();
-        jPanel.add(new JLabel("Start"));
+        jPanel.add(new JLabel(""));
         this.frame.add(jPanel, "One");
 
         // Setze Inhalt nach Name. Hier kann die Ansicht beeinflusst werden.
         this.cardLayout.show(frame.getContentPane(), "One");
 
-        this.frame.setJMenuBar(new AppMenuBar().getComponent(this));
+        this.frame.setJMenuBar(new LoginMenuBar().getComponent(this));
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setPreferredSize(new Dimension(800, 600));
         this.frame.setResizable(false);

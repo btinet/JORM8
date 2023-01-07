@@ -19,4 +19,8 @@ public class Resources {
     public static Benutzer getBenutzer(){
         return Resources.benutzer;
     }
+
+    public static void destroyBenutzer(){
+        Resources.benutzer = null;
+    }
 }

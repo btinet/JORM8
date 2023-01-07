@@ -8,6 +8,7 @@ import core.model.ResultSorter;
 import core.view.View;
 import entity.Kollegiat;
 import repository.KollegiatRepository;
+import view.app.AppMenuBar;
 import view.kollegiat.DetailPanel;
 import view.kollegiat.TablePanel;
 
@@ -28,6 +29,7 @@ public class AppController extends Controller {
 
     public AppController(View view){
         super(view,new KollegiatRepository(true));
+
     }
 
     public void index(ActionEvent e) {
@@ -35,7 +37,7 @@ public class AppController extends Controller {
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
         ArrayList<HashMap<String, String>> kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
-
+        this.view.frame.setJMenuBar(new AppMenuBar().getComponent(this.view));
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
