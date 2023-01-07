@@ -35,11 +35,7 @@ public class AppController extends Controller {
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
         ArrayList<HashMap<String, String>> kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
-        for(HashMap<String, String> item : kJoin){
-            System.err.println("Vorname: " + item.get("vorname"));
-            System.err.println("Nachname: " + item.get("name"));
-            System.err.println("Leitfrage: " + item.get("leitfrage"));
-        }
+
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -126,7 +122,9 @@ public class AppController extends Controller {
         panelBag.gridy = 2;
         panel.add(new JSeparator(),panelBag);
         panelBag.gridy = 3;
-        panel.add(kollegiatJList,panelBag);
+        JScrollPane sp = new JScrollPane(kollegiatJList);
+        sp.setBorder(BorderFactory.createEmptyBorder());
+        panel.add(sp,panelBag);
         panelBag.weightx = 0;
         panelBag.gridwidth = 1;
         panelBag.gridx = 0;
@@ -142,9 +140,7 @@ public class AppController extends Controller {
 
         constraints.gridy = 0;
         main.add(panel,constraints);
-        JScrollPane sp = new JScrollPane(main);
-        sp.setBorder(BorderFactory.createEmptyBorder());
-        addLayoutComponent(sp,"Panel");
+        addLayoutComponent(main,"Panel");
         setLayout("Panel");
     }
 
