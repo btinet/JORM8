@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update query builder">
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add result as list method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/QueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/KollegiatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/KollegiatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673008495923</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add result as list method">
+      <created>1673033201742</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673033201742</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,7 +185,8 @@
     <MESSAGE value="update QueryBuilder" />
     <MESSAGE value="update entities" />
     <MESSAGE value="update query builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="update query builder" />
+    <MESSAGE value="add result as list method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add result as list method" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

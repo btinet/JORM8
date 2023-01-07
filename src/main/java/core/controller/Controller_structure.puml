@@ -103,14 +103,12 @@ EntityManager937501722[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)EntityManager</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" ># insert()</TD></TR>
 <TR><TD ALIGN="LEFT" >+ persist(e: Entity)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ persist(e: Entity, field: String)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ persist(e: Entity, id: int)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ persist(e: Entity, id: int, field: String)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ remove(e: Entity, id: int)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ remove(e: Entity, id: int, field: String)</TD></TR>
-<TR><TD ALIGN="LEFT" ># update()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -125,9 +123,12 @@ QueryBuilder937501722[
 <TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   condition: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   entity: Entity [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   groupBy: StringBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   having: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   insertData: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   insertion: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   integerParameters: HashMap&lt;Integer, Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   joins: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   naturalCase: Boolean [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   orderBy: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   projection: StringBuilder [0..1]</TD></TR>
@@ -136,20 +137,28 @@ QueryBuilder937501722[
 <TR><TD ALIGN="LEFT" >-   stringParameters: HashMap&lt;Integer, String&gt; [0..*]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   table: StringBuilder [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   ucFirst: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: StringBuilder [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" ># andWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValues(primaryKey: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ andHaving(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ andWhere(condition: String): QueryBuilder</TD></TR>
 <TR><TD ALIGN="LEFT" >- generateSnakeTailString(value: String): String</TD></TR>
 <TR><TD ALIGN="LEFT" >- getInsertColumns(primaryKey: String): String</TD></TR>
 <TR><TD ALIGN="LEFT" >- getInsertData(primaryKey: String): String</TD></TR>
-<TR><TD ALIGN="LEFT" ># insertInto(): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># insertOrm(): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># insertOrm(primaryKey: String): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># orWhere(condition: String): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># orderBy(orderBy: HashMap&lt;String, String&gt;): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># select(fields: String): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># selectOrm(): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: int): QueryBuilder</TD></TR>
-<TR><TD ALIGN="LEFT" ># setParameter(parameter: Integer, value: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPersistResult()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ groupBy(field: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ innerJoin(table: String, key: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ innerJoin(table: String, left: String, right: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertInto(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertOrm(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insertOrm(primaryKey: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orHaving(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orWhere(condition: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orderBy(orderBy: HashMap&lt;String, String&gt;): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ select(fields: String): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selectOrm(): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setParameter(parameter: Integer, value: int): QueryBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setParameter(parameter: Integer, value: String): QueryBuilder</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -212,103 +221,20 @@ subgraph cluster_1298275357 {
 	fillcolor="#ececec"
 	style=filled
    
-   Antrag1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Antrag</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >#   AID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   KID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   alsEinzelpruefung: Boolean [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   genehmigtAm: String [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-Fach1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Fach</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >#   Bezeichnung: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-Kollegiat1298275357[
+   Kollegiat1298275357[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)Kollegiat</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   BetreuerID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   KID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   Name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   TutorID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   Vorname: String [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-Lehrkraft1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Lehrkraft</TD></TR>
+<TR><TD ALIGN="LEFT" >#   betreuerId: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   kid: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   tutorId: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vorname: String [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   Anrede: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   LID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   Name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   Vorname: String [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-LehrkraftFach1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)LehrkraftFach</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   LFID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   LID: Integer [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-Thema1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Thema</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >#   Erlaeuterung: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   Leitfrage: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   PruefJahr: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-ThemaFach1298275357[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ThemaFach</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >#   FID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   TFID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   TID: Integer [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >#   istRefFach: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setBetreuerID(betreuerID: Integer): Kollegiat</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setName(name: String): Kollegiat</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTutorID(tutorID: Integer): Kollegiat</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setVorname(vorname: String): Kollegiat</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -333,6 +259,16 @@ subgraph cluster_1950800714 {
 	fillcolor="#FFFFFF"
 ];
 
+BenutzerRepository1950800714[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BenutzerRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
 FachRepository1950800714[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)FachRepository</TD></TR>
@@ -346,6 +282,8 @@ FachRepository1950800714[
 KollegiatRepository1950800714[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)KollegiatRepository</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getKollegiatJoinAntrag(kid: int): ArrayList&lt;HashMap&lt;String, String&gt;&gt;</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -475,6 +413,7 @@ Controller712365749[
 <HR/>
 <TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ addLayoutComponent(c: Component, constraint: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ redirectToController(listener: ActionListener)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -552,7 +491,8 @@ subgraph cluster_96801 {
 
 'edges    
 AppController637428636 -> DetailPanel653864717[label="show() -> updateFields()"];
-AppController637428636 -> EntityManager937501722[label="show() -> persist()"];
+AppController637428636 -> Kollegiat1298275357[label="show() -> setName()"];
+AppController637428636 -> KollegiatRepository1950800714[label="index() -> getKollegiatJoinAntrag()"];
 AppController637428636 -> Resources1176438574[label="show() -> getImage()"];
 Controller712365749 -> AntragController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> AppController637428636[arrowhead=none, arrowtail=empty, dir=both];
@@ -568,17 +508,11 @@ DetailPanel653864717 -> BagConstraints1632063596[label="gbc
 [0..1]"];
 DetailPanel653864717 -> Kollegiat1298275357[label="kollegiat
 [0..1]"];
-Entity937501722 -> Antrag1298275357[arrowhead=none, arrowtail=empty, dir=both];
-Entity937501722 -> Fach1298275357[arrowhead=none, arrowtail=empty, dir=both];
 Entity937501722 -> Kollegiat1298275357[arrowhead=none, arrowtail=empty, dir=both];
-Entity937501722 -> Lehrkraft1298275357[arrowhead=none, arrowtail=empty, dir=both];
-Entity937501722 -> LehrkraftFach1298275357[arrowhead=none, arrowtail=empty, dir=both];
-Entity937501722 -> Thema1298275357[arrowhead=none, arrowtail=empty, dir=both];
-Entity937501722 -> ThemaFach1298275357[arrowhead=none, arrowtail=empty, dir=both];
-EntityManager937501722 -> QueryBuilder937501722[label="persist() -> insertOrm()"];
 QueryBuilder937501722 -> Entity937501722[label="entity
 [0..1]"];
 Repository937501722 -> AntragRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
+Repository937501722 -> BenutzerRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
 Repository937501722 -> Entity937501722[label="entity
 [0..1]"];
 Repository937501722 -> EntityManager937501722[arrowhead=none, arrowtail=empty, dir=both];
