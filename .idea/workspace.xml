@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add result as list method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/representations.aird" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673033201742</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add result as list method">
+      <created>1673070879344</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673070879344</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

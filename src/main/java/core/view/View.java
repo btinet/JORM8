@@ -29,9 +29,9 @@ public class View {
             ex.printStackTrace();
         }
 
-        // Frame erstellen
 
         this.frame = new JFrame("eSchool Manager");
+
         this.frame.setIconImage(new ImageIcon(Resources.getImage("favicon-32x32.png")).getImage());
         this.cardLayout = new CardLayout();
         this.frame.setLayout(this.cardLayout);
