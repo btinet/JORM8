@@ -1,7 +1,6 @@
 package core.controller;
 
-import controller.AppController;
-import core.model.Entity;
+import core.global.Response;
 import core.model.Repository;
 import core.view.View;
 
@@ -9,8 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public abstract class Controller implements ActionListener {
 
@@ -35,11 +32,9 @@ public abstract class Controller implements ActionListener {
         this.view.cardLayout.show(this.view.frame.getContentPane(), constraint);
     }
 
+    // TODO: Redirect Workaround mit ActionListener auf unsichtbaren Button "richtig" implementieren.
     public void redirectToController(ActionListener listener){
-        System.err.println("Redirect wurde ausgeführt");
-        JButton redirectButton = new JButton();
-        redirectButton.addActionListener(listener);
-        redirectButton.doClick();
+        Response.redirectToController(listener);
     }
 
     @Override

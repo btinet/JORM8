@@ -37,26 +37,22 @@ public class DetailPanel extends JPanel {
 
         JLabel vorname = new JLabel("Vorname");
         this.fieldVorname = new JTextField();
-        this.fieldVorname.setBackground(new Color(220,220,224));
         this.fieldVorname.setEditable(false);
         this.fieldVorname.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
         JLabel nachname = new JLabel("Nachname");
         this.fieldNachname = new JTextField();
         this.fieldNachname.setEditable(false);
-        this.fieldNachname.setBackground(new Color(220,220,224));
         this.fieldNachname.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
         JLabel tutor = new JLabel("Tutor:in");
         this.fieldTutor = new JTextField();
         this.fieldTutor.setEditable(false);
-        this.fieldTutor.setBackground(new Color(220,220,224));
         this.fieldTutor.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
         JLabel betreuer = new JLabel("Betreuer:in");
         this.fieldBetreuer = new JTextField();
         this.fieldBetreuer.setEditable(false);
-        this.fieldBetreuer.setBackground(new Color(220,220,224));
         this.fieldBetreuer.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 
         // Zellen setzen
@@ -110,7 +106,7 @@ public class DetailPanel extends JPanel {
         if(this.kollegiat.getBetreuer().isBenutzer()){
             this.fieldBetreuer.setForeground(new Color(180,64,64));
         } else {
-            this.fieldBetreuer.setForeground(new Color(0,0,0));
+            this.fieldBetreuer.setForeground(null);
         }
         this.fieldTutor.setText(this.kollegiat.getTutor().toString());
         this.fieldBetreuer.setText(this.kollegiat.getBetreuer().toString());

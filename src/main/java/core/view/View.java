@@ -1,13 +1,19 @@
 package core.view;
 
+import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.intellijthemes.*;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
+import controller.AuthenticationController;
 import core.global.Resources;
-import javafx.scene.image.Image;
-import view.app.AppMenuBar;
+import core.global.Response;
 import view.app.LoginMenuBar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+
+import view.authentication.Login;
+import view.authentication.LoginForm;
 
 public class View {
 
@@ -25,8 +31,9 @@ public class View {
     protected void init() {
 
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            UIManager.setLookAndFeel( new FlatLightLaf());
+            FlatVuesionIJTheme.setup();
+        } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         }
 
@@ -36,21 +43,13 @@ public class View {
         this.frame.setIconImage(new ImageIcon(Resources.getImage("favicon-32x32.png")).getImage());
         this.cardLayout = new CardLayout();
         this.frame.setLayout(this.cardLayout);
-
-        // JPanel hinzufügen
-        JPanel jPanel = new JPanel();
-        jPanel.add(new JLabel(""));
-        this.frame.add(jPanel, "One");
-
-        // Setze Inhalt nach Name. Hier kann die Ansicht beeinflusst werden.
-        this.cardLayout.show(frame.getContentPane(), "One");
-
-        this.frame.setJMenuBar(new LoginMenuBar().getComponent(this));
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setPreferredSize(new Dimension(800, 600));
+        this.frame.setPreferredSize(new Dimension(1280, 720));
         this.frame.setResizable(false);
         this.frame.pack();
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
+
+        Response.redirectToController(new AuthenticationController(this)::index);
     }
 }

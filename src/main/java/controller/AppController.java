@@ -2,7 +2,6 @@ package controller;
 
 import core.controller.Controller;
 import core.global.Resources;
-import core.model.Entity;
 import core.model.EntityManager;
 import core.model.ResultSorter;
 import core.view.View;
@@ -10,7 +9,6 @@ import entity.Kollegiat;
 import repository.KollegiatRepository;
 import view.app.AppMenuBar;
 import view.kollegiat.DetailPanel;
-import view.kollegiat.TablePanel;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -20,19 +18,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.security.KeyStore;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
+@SuppressWarnings("unchecked")
 
 public class AppController extends Controller {
 
     public AppController(View view){
         super(view,new KollegiatRepository(true));
-
     }
 
     public void index(ActionEvent e) {
+
         DetailPanel kollegiatDetail = new DetailPanel(new Kollegiat());
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
@@ -229,6 +230,35 @@ public class AppController extends Controller {
             this.redirectToController(new AppController(this.view)::index);
         }
 
+    }
+
+    public void restartApplication(ActionEvent e)
+    {
+        final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+        final File currentJar;
+        try {
+            currentJar = new File(AppController.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+        } catch (URISyntaxException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        /* is it a jar file? */
+        if(!currentJar.getName().endsWith(".jar"))
+            return;
+
+        /* Build command: java -jar application.jar */
+        final ArrayList<String> command = new ArrayList<String>();
+        command.add(javaBin);
+        command.add("-jar");
+        command.add(currentJar.getPath());
+
+        final ProcessBuilder builder = new ProcessBuilder(command);
+        try {
+            builder.start();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        System.exit(0);
     }
 
 }

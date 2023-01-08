@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public abstract class Repository {
 
     protected Entity entity;
@@ -79,6 +80,7 @@ public abstract class Repository {
             throw new RuntimeException(e);
         }
     }
+
 
     public ArrayList<Entity> findBy(HashMap<String, String> condition){
         try {
