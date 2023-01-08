@@ -9,32 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add authenticator">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/global/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/global/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/model/Condition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_Key_Security_30px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_key_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_login_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_open_lock_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/logo_96x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JORM8_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/JORM8_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update controlling">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_broken_link_16px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_link_16px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_offline_16px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_online_16px.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/kollegiat/DetailPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673075761910</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update controlling">
+      <created>1673196338133</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1673196338133</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,7 +235,8 @@
     <MESSAGE value="add result as list method" />
     <MESSAGE value="update controller" />
     <MESSAGE value="add authenticator" />
-    <option name="LAST_COMMIT_MESSAGE" value="add authenticator" />
+    <MESSAGE value="update controlling" />
+    <option name="LAST_COMMIT_MESSAGE" value="update controlling" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

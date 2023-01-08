@@ -3,13 +3,11 @@ package view.authentication;
 import com.formdev.flatlaf.FlatClientProperties;
 import controller.AppController;
 import controller.AuthenticationController;
-import core.global.Database;
-import core.global.Response;
-import core.global.Session;
-import core.global.SysColor;
+import core.global.*;
 import core.view.View;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class Login extends JPanel {
@@ -19,6 +17,7 @@ public class Login extends JPanel {
     private JButton button1;
     private JLabel errorLabel;
     private JLabel onlineLabel;
+    private JPanel infoCard;
 
     private final View view;
 
@@ -26,19 +25,24 @@ public class Login extends JPanel {
         this.view = view;
 
         if(null == Database.getConnection()){
-            this.onlineLabel.setText("offline");
+            this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
+            this.onlineLabel.setText("OFFLINE");
             this.onlineLabel.setForeground(SysColor.DANGER.get());
             this.button1.setEnabled(false);
         } else {
-            this.onlineLabel.setText("online");
+            this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
+            this.onlineLabel.setText("ONLINE");
             this.onlineLabel.setForeground(SysColor.SUCCESS.get());
             this.button1.setEnabled(true);
         }
 
         if(0 < Session.copy("login_error").length()){
+            this.infoCard.setBackground(SysColor.SECONDARY.get());
+            this.infoCard.setVisible(true);
             this.setErrorLabel(Session.get("login_error"));
         } else {
-            this.setErrorLabel("");
+            this.infoCard.setVisible(false);
+            this.setErrorLabel("Alles in Ordnung");
         }
 
         button1.addActionListener(e -> onOK());
@@ -77,5 +81,6 @@ public class Login extends JPanel {
     protected void setErrorLabel(String message){
         this.errorLabel.setForeground(SysColor.DANGER.get());
         this.errorLabel.setText(message);
+        this.errorLabel.setIcon(new ImageIcon(Resources.getImage("icons8_error_16px.png")));
     }
 }

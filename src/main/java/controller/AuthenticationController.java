@@ -67,17 +67,17 @@ public class AuthenticationController extends Controller {
             System.out.println("Benutzer mit LehrerID '" + benutzer.getLid() + "' gefunden!");
             System.out.println("User Passwort: '" + benutzer.getPasswort().toString() + "'");
             if(Objects.equals(benutzer.getPasswort(),password)){
-                System.out.println("Passwort stimmt überein!");
+                System.out.println("Kennung und Passwort stimmen überein!");
                 Session.setBenutzer(benutzer);
                 Response.redirectToController(new AppController(this.view)::index);
             } else {
                 System.err.println("Passwort stimmt nicht überein!");
-                Session.set("login_error","Passwort stimmt nicht überein!");
+                Session.set("login_error","Kennung und Passwort stimmen nicht überein!");
                 Response.redirectToController(new AuthenticationController(this.view)::index);
             }
         } else {
             System.err.println("Kein Benutzer gefunden!");
-            Session.set("login_error","Benutzer nicht gefunden!");
+            Session.set("login_error","Kennung nicht gefunden!");
             Response.redirectToController(new AuthenticationController(this.view)::index);
         }
 

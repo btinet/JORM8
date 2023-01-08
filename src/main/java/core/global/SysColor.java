@@ -5,6 +5,7 @@ import java.awt.*;
 public enum SysColor {
 
     PRIMARY,
+    SECONDARY,
     SUCCESS,
     WARNING,
     DANGER;
@@ -18,6 +19,9 @@ public enum SysColor {
         switch (this) {
             case PRIMARY:
                 color = new Color(14, 142, 206);
+                break;
+            case SECONDARY:
+                color = new Color(37, 45, 55);
                 break;
             case SUCCESS:
                 color = new Color(96, 178, 96);
