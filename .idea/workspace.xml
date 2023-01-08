@@ -9,16 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update controlling">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_broken_link_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_link_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_offline_16px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_online_16px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update layout">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_error_16px.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673196338133</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update layout">
+      <created>1673211515322</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1673211515322</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,7 +235,8 @@
     <MESSAGE value="update controller" />
     <MESSAGE value="add authenticator" />
     <MESSAGE value="update controlling" />
-    <option name="LAST_COMMIT_MESSAGE" value="update controlling" />
+    <MESSAGE value="update layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="update layout" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
