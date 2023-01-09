@@ -7,7 +7,6 @@ import core.model.ResultSorter;
 import core.view.View;
 import entity.Kollegiat;
 import repository.KollegiatRepository;
-import sun.applet.Main;
 import view.app.AppMenuBar;
 import view.kollegiat.DetailPanel;
 
@@ -29,8 +28,8 @@ import java.util.HashMap;
 
 public class AppController extends Controller {
 
-    public AppController(View view){
-        super(view,new KollegiatRepository(true));
+    public AppController(){
+        super(new KollegiatRepository(true));
     }
 
     public void index(ActionEvent e) {
@@ -53,7 +52,7 @@ public class AppController extends Controller {
         constraints.insets = new Insets(5,5,5,5);
 
         JButton showBtn = new JButton("Details...");
-        showBtn.addActionListener((new AppController(view)::show));
+        showBtn.addActionListener((new AppController()::show));
         showBtn.setEnabled(false);
         showBtn.setActionCommand("0");
 
@@ -90,7 +89,7 @@ public class AppController extends Controller {
 
                             click.setActionCommand(String.valueOf(kollegiat.getKID()));
 
-                            click.addActionListener((new AppController(view)::show));
+                            click.addActionListener((new AppController()::show));
                             click.doClick();
                             System.out.println("Doppelklick auf Listenpunkt: " + o);
                         }
@@ -228,7 +227,7 @@ public class AppController extends Controller {
 
         } else {
             l.setText("Kein Element wurde ausgewählt");
-            this.redirectToController(new AppController(this.view)::index);
+            this.redirectToController(new AppController()::index);
         }
 
     }
@@ -243,12 +242,12 @@ public class AppController extends Controller {
             throw new RuntimeException(ex);
         }
 
-        /* is it a jar file? */
+        // Prüfen, ob es sich um ein ausführbares Java-Programm handelt.
         if(!currentJar.getName().endsWith(".jar"))
             return;
 
-        /* Build command: java -jar application.jar */
-        final ArrayList<String> command = new ArrayList<String>();
+        // Konsolenbefehl generieren: java -jar application.jar
+        final ArrayList<String> command = new ArrayList<>();
         command.add(javaBin);
         command.add("-jar");
         command.add(currentJar.getPath());

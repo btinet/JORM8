@@ -179,7 +179,7 @@ public abstract class Repository {
         if (e instanceof CommunicationsException){
             System.err.println("Verbindung unterbrochen");
             Database.destroyConnection();
-            Response.redirectToController(new AuthenticationController(View.view)::index);
+            Response.redirectToController(new AuthenticationController()::index);
         }
         System.err.println(e.getErrorCode());
     }

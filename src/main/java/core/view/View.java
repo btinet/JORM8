@@ -49,6 +49,6 @@ public class View {
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
 
-        Response.redirectToController(new AuthenticationController(this)::index);
+        Response.redirectToController(new AuthenticationController()::index);
     }
 }

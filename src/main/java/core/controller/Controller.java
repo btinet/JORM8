@@ -15,8 +15,8 @@ public abstract class Controller implements ActionListener {
 
     protected Repository repository;
 
-    public Controller(View view, Repository repository){
-       this.view = view;
+    public Controller(Repository repository){
+       this.view = View.view;
        this.repository = repository;
     }
 

@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 
 public class KollegiatController extends Controller {
 
-    public KollegiatController(View view){
-        super(view, new KollegiatRepository(true));
+    public KollegiatController(){
+        super(new KollegiatRepository(true));
     }
 
     public void index(ActionEvent e){

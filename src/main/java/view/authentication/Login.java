@@ -21,8 +21,8 @@ public class Login extends JPanel {
 
     private final View view;
 
-    public Login(View view){
-        this.view = view;
+    public Login(){
+        this.view = View.view;
 
         if(null == Database.getConnection()){
             this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
@@ -31,7 +31,7 @@ public class Login extends JPanel {
             this.button1.setEnabled(false);
             this.restartButton.setVisible(true);
             this.restartButton.putClientProperty(FlatClientProperties.BUTTON_TYPE,FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-            this.restartButton.addActionListener(new AppController(this.view)::restartApplication);
+            this.restartButton.addActionListener(new AppController()::restartApplication);
         } else {
             this.restartButton.setVisible(false);
             this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
@@ -74,7 +74,7 @@ public class Login extends JPanel {
     private void onOK() {
         Session.set("username",this.textField1.getText());
         Session.set("password", String.valueOf(this.passwordField1.getPassword()));
-        Response.redirectToController((new AuthenticationController(view)::login));
+        Response.redirectToController((new AuthenticationController()::login));
     }
 
 

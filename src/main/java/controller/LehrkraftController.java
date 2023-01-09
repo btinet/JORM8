@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 
 public class LehrkraftController extends Controller {
 
-    public LehrkraftController(View view){
-        super(view, new LehrkraftRepository(true));
+    public LehrkraftController(){
+        super(new LehrkraftRepository(true));
     }
 
     public void index(ActionEvent e){

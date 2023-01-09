@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 
 public class FachController extends Controller {
 
-    public FachController(View view){
-        super(view, new FachRepository(true));
+    public FachController(){
+        super(new FachRepository(true));
     }
 
     public void index(ActionEvent e){

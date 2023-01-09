@@ -4,38 +4,22 @@ import java.awt.*;
 
 public enum SysColor {
 
-    PRIMARY,
-    SECONDARY,
-    SUCCESS,
-    WARNING,
-    DANGER;
+    PRIMARY (14, 142, 206),
 
-    SysColor() {
+    SECONDARY (37, 45, 55),
+    SUCCESS (96, 178, 96),
+    WARNING (204, 204, 96),
+    DANGER (178, 56, 96),
+
+    DEFAULT (56,56,56);
+
+    private final Color color;
+
+    SysColor(int red, int green, int blue) {
+        this.color = new Color(red,green, blue);
     }
 
     public Color get(){
-        Color color = null;
-
-        switch (this) {
-            case PRIMARY:
-                color = new Color(14, 142, 206);
-                break;
-            case SECONDARY:
-                color = new Color(37, 45, 55);
-                break;
-            case SUCCESS:
-                color = new Color(96, 178, 96);
-                break;
-            case WARNING:
-                color = new Color(204, 204, 96);
-                break;
-            case DANGER:
-                color = new Color(178, 56, 96);
-                break;
-            default:
-                color = new Color(56,56,56);
-        }
-
         return color;
     }
 

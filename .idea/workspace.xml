@@ -10,14 +10,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add icon">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/app/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AntragController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AntragController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FachController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/KollegiatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/KollegiatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LehrkraftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LehrkraftController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ThemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ThemaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/app/LoginMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/LoginMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>

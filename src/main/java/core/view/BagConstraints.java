@@ -6,12 +6,12 @@ public class BagConstraints extends GridBagConstraints {
 
     public BagConstraints(){
         this.setAnchor(GridBagConstraints.NORTH);
-        this.setFill(GridBagConstraints.HORIZONTAL);
+        this.setFill(GridBagConstraints.BOTH);
         this.setPaddingX(0);
         this.setPaddingY(0);
         this.setWidth(1);
         this.setStretch(1,1);
-        this.setInsets(new Insets(10,0,0,0));
+        this.setInsets(new Insets(5,5,5,5));
     }
 
     public void setRow(int row){

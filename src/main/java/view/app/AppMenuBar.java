@@ -16,17 +16,17 @@ public class AppMenuBar {
 
         JMenu menu0 = new JMenu("Datei");
         JMenuItem menu0_1 = new JMenuItem("abmelden", new ImageIcon(Resources.getImage("icons8_view_all_16px.png")));
-        menu0_1.addActionListener((new AuthenticationController(view)::logoff));
+        menu0_1.addActionListener((new AuthenticationController()::logoff));
         menu0.add(menu0_1);
 
         JMenu menu1 = new JMenu("Kollegiat:innen");
         JMenu menu2 = new JMenu("Lehrkräfte");
         JMenuItem menu2_1 = new JMenuItem("Auflisten", new ImageIcon(Resources.getImage("icons8_lips_16px.png")));
         JMenuItem menu1_1 = new JMenuItem("Auflisten", new ImageIcon(Resources.getImage("icons8_view_all_16px.png")));
-        menu1_1.addActionListener((new AppController(view)::index));
+        menu1_1.addActionListener((new AppController()::index));
         menu1_1.setActionCommand("1");
         JMenuItem menu1_2 = new JMenuItem("suchen...", new ImageIcon(Resources.getImage("icons8_eye_16px.png")));
-        menu1_2.addActionListener((new AppController(view)::show));
+        menu1_2.addActionListener((new AppController()::show));
         menu1_2.setActionCommand("1");
         menu1.add(menu1_1);
         menu1.add(menu1_2);
