@@ -14,6 +14,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/global/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
     </list>
@@ -44,21 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE": "right",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE": "left",
-    "last_opened_file_path": "C:/Users/BenjaminWagner/IdeaProjects/JORM8/src/main/resources/config",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "aws"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE&quot;: &quot;right&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE&quot;: &quot;left&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/BenjaminWagner/IdeaProjects/JORM8/src/main/resources/config&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;aws&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\BenjaminWagner\IdeaProjects\JORM8\src\main\resources\config" />

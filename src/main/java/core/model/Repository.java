@@ -1,5 +1,12 @@
 package core.model;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
+import controller.AuthenticationController;
+import core.global.Database;
+import core.global.Response;
+import core.view.View;
+
+import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -77,8 +84,9 @@ public abstract class Repository {
                 throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            this.catchException(e);
         }
+        return null;
     }
 
 
@@ -107,8 +115,9 @@ public abstract class Repository {
                 throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            this.catchException(e);
         }
+        return null;
     }
 
     public ArrayList<? extends Entity> findAll(){
@@ -120,8 +129,9 @@ public abstract class Repository {
                 throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            this.catchException(e);
         }
+        return null;
     }
 
     public ArrayList<? extends Entity> findAll(HashMap<String, String> orderBy){
@@ -139,8 +149,9 @@ public abstract class Repository {
                 throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            this.catchException(e);
         }
+        return null;
     }
 
     protected Entity doFind(int id, String field){
@@ -159,8 +170,18 @@ public abstract class Repository {
                 throw new RuntimeException(e);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            this.catchException(e);
         }
+        return null;
+    }
+
+    private void catchException(SQLException e){
+        if (e instanceof CommunicationsException){
+            System.err.println("Verbindung unterbrochen");
+            Database.destroyConnection();
+            Response.redirectToController(new AuthenticationController(View.view)::index);
+        }
+        System.err.println(e.getErrorCode());
     }
 
 }

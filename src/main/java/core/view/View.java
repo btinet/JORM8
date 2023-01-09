@@ -2,20 +2,17 @@ package core.view;
 
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.intellijthemes.*;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
 import controller.AuthenticationController;
 import core.global.Resources;
 import core.global.Response;
-import view.app.LoginMenuBar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
-import view.authentication.Login;
-import view.authentication.LoginForm;
-
 public class View {
+
+    public static View view;
 
     public JFrame frame;
 
@@ -36,6 +33,8 @@ public class View {
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         }
+
+        view = this;
 
 
         this.frame = new JFrame("eSchool Manager");
