@@ -9,8 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update layout">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/icons8_error_16px.png" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add icon">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller_structure.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/login.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +56,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+    "settings.editor.selected.configurable": "aws"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -209,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673211515322</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add icon">
+      <created>1673211655516</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1673211655517</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,7 +248,8 @@
     <MESSAGE value="add authenticator" />
     <MESSAGE value="update controlling" />
     <MESSAGE value="update layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="update layout" />
+    <MESSAGE value="add icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="add icon" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

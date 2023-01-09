@@ -14,20 +14,24 @@ public class Database {
     private static final String DB_URL ="db.url";
     private static Connection connection = null;
 
-    public static void connect(){
+    public static Connection connect(){
+        if(null == connection){
             try {
                 Properties properties = new Properties();
                 properties.load(Resources.getConfig("database.properties").openStream());
                 Class.forName(properties.getProperty(DB_DRIVER_CLASS));
                 connection = DriverManager.getConnection(properties.getProperty(DB_URL), properties.getProperty(DB_USERNAME) , properties.getProperty(DB_PASSWORD) );
                 System.out.println("Verbindung hergestellt.");
+                Session.set("connection","online");
             } catch (ClassNotFoundException | SQLException | IOException e) {
-                e.printStackTrace();
+                Session.set("connection","offline");
             }
+        }
+        return connection;
     }
 
     public static Connection getConnection(){
-        return connection;
+        return connect();
     }
 
 }

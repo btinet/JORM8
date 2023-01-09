@@ -7,7 +7,6 @@ import core.global.*;
 import core.view.View;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class Login extends JPanel {
@@ -18,6 +17,7 @@ public class Login extends JPanel {
     private JLabel errorLabel;
     private JLabel onlineLabel;
     private JPanel infoCard;
+    private JButton restartButton;
 
     private final View view;
 
@@ -29,7 +29,11 @@ public class Login extends JPanel {
             this.onlineLabel.setText("OFFLINE");
             this.onlineLabel.setForeground(SysColor.DANGER.get());
             this.button1.setEnabled(false);
+            this.restartButton.setVisible(true);
+            this.restartButton.putClientProperty(FlatClientProperties.BUTTON_TYPE,FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
+            this.restartButton.addActionListener(new AppController(this.view)::restartApplication);
         } else {
+            this.restartButton.setVisible(false);
             this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
             this.onlineLabel.setText("ONLINE");
             this.onlineLabel.setForeground(SysColor.SUCCESS.get());

@@ -7,6 +7,7 @@ import core.model.ResultSorter;
 import core.view.View;
 import entity.Kollegiat;
 import repository.KollegiatRepository;
+import sun.applet.Main;
 import view.app.AppMenuBar;
 import view.kollegiat.DetailPanel;
 
@@ -237,7 +238,7 @@ public class AppController extends Controller {
         final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
         final File currentJar;
         try {
-            currentJar = new File(AppController.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            currentJar = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
         } catch (URISyntaxException ex) {
             throw new RuntimeException(ex);
         }

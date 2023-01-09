@@ -213,6 +213,36 @@ subgraph cluster_1243020381 {
 	shape=plaintext
 	fillcolor="#FFFFFF"
 ];
+
+Response1176438574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Response</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ redirectToController(listener: ActionListener)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Session1176438574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Session</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- bytesToHex(bytes: byte[]): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ copy(key: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destroyBenutzer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destroySession()</TD></TR>
+<TR><TD ALIGN="LEFT" >- digest(input: byte[]): byte[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(key: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getHash(string: String): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
 } 
 
 subgraph cluster_1298275357 { 
@@ -396,7 +426,22 @@ AppController637428636[
 <TR><TD ALIGN="LEFT" >(C)AppController</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ restartApplication(e: ActionEvent)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ show(e: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AuthenticationController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AuthenticationController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ index(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ login(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ logoff(e: ActionEvent)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -490,17 +535,21 @@ subgraph cluster_96801 {
 } 
 
 'edges    
+AppController637428636 -> AppMenuBar1194705752[label="index() -> getComponent()"];
 AppController637428636 -> DetailPanel653864717[label="show() -> updateFields()"];
 AppController637428636 -> Kollegiat1298275357[label="show() -> setName()"];
 AppController637428636 -> KollegiatRepository1950800714[label="index() -> getKollegiatJoinAntrag()"];
 AppController637428636 -> Resources1176438574[label="show() -> getImage()"];
+AuthenticationController637428636 -> Repository937501722[label="login() -> findOneBy()"];
 Controller712365749 -> AntragController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> AppController637428636[arrowhead=none, arrowtail=empty, dir=both];
+Controller712365749 -> AuthenticationController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> FachController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> KollegiatController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> LehrkraftController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> Repository937501722[label="repository
 [0..1]"];
+Controller712365749 -> Response1176438574[label="redirectToController() -> redirectToController()"];
 Controller712365749 -> ThemaController637428636[arrowhead=none, arrowtail=empty, dir=both];
 Controller712365749 -> View1632063596[label="view
 [0..1]"];
@@ -522,8 +571,8 @@ Repository937501722 -> LehrkraftRepository1950800714[arrowhead=none, arrowtail=e
 Repository937501722 -> QueryBuilder937501722[label="queryBuilder
 [0..1]"];
 Repository937501722 -> ThemaRepository1950800714[arrowhead=none, arrowtail=empty, dir=both];
-View1632063596 -> AppMenuBar1194705752[label="init() -> getComponent()"];
 View1632063596 -> Resources1176438574[label="init() -> getImage()"];
+View1632063596 -> Response1176438574[label="init() -> redirectToController()"];
     
 }
 @enduml
