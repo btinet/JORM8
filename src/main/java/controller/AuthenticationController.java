@@ -12,7 +12,6 @@ import repository.BenutzerRepository;
 import view.app.MainPanel;
 import view.authentication.Login;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
