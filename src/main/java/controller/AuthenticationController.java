@@ -27,7 +27,6 @@ public class AuthenticationController extends Controller {
         MainPanel main = new MainPanel()
                 // TODO: addNorth(), addSouth() und addCenter() als Shortcut hinzufügen.
                 .addComponent(new Login())
-                .addComponent(new JTextField("Bla und blub"))
         ;
 
         // Panel zum Kartenlayout hinzufügen
@@ -72,6 +71,5 @@ public class AuthenticationController extends Controller {
         Session.destroySession();
         Response.redirectToController(new AuthenticationController()::index);
     }
-
 
 }

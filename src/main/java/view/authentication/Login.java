@@ -6,11 +6,12 @@ import controller.AuthenticationController;
 import core.global.*;
 import core.view.View;
 import enums.SysColor;
+import enums.SystemMessage;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Login extends JPanel {
+public class Login extends JPanel implements SystemMessage {
     private JPanel panel1;
     private JTextField textField1;
     private JPasswordField passwordField1;
@@ -41,10 +42,10 @@ public class Login extends JPanel {
             this.button1.setEnabled(true);
         }
 
-        if(0 < Session.copy("login_error").length()){
+        if(0 < Session.copy(LOGIN_ERROR).length()){
             this.infoCard.setBackground(SysColor.SECONDARY.get());
             this.infoCard.setVisible(true);
-            this.setErrorLabel(Session.get("login_error"));
+            this.setErrorLabel(Session.get(LOGIN_ERROR));
         } else {
             this.infoCard.setVisible(false);
             this.setErrorLabel("Alles in Ordnung");
