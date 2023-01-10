@@ -2,31 +2,28 @@ package core.view;
 
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.intellijthemes.*;
+
 import controller.AuthenticationController;
+
 import core.global.Resources;
 import core.global.Response;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 public class View {
 
     public static View view;
-
     public JFrame frame;
-
     public CardLayout cardLayout;
-
-    private URL imagePath;
 
     public View(){
         this.init();
-
     }
 
     protected void init() {
 
+        // Look and Feel Instanz erstellen
         try {
             UIManager.setLookAndFeel( new FlatLightLaf());
             FlatVuesionIJTheme.setup();
@@ -34,11 +31,13 @@ public class View {
             ex.printStackTrace();
         }
 
+        // View global verfügbar machen
         view = this;
 
-
+        // Frame erstellen
         this.frame = new JFrame("eSchool Manager");
 
+        // Eigenschaften festlegen
         this.frame.setIconImage(new ImageIcon(Resources.getImage("favicon-32x32.png")).getImage());
         this.cardLayout = new CardLayout();
         this.frame.setLayout(this.cardLayout);
@@ -49,6 +48,8 @@ public class View {
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
 
+        // Zum Login-Gate weiterleiten
         Response.redirectToController(new AuthenticationController()::index);
+
     }
 }
