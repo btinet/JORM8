@@ -1,10 +1,12 @@
 package view.authentication;
 
 import com.formdev.flatlaf.FlatClientProperties;
+
 import controller.AppController;
 import controller.AuthenticationController;
+
 import core.global.*;
-import core.view.View;
+
 import enums.SysColor;
 import enums.SystemMessage;
 
@@ -21,10 +23,8 @@ public class Login extends JPanel implements SystemMessage {
     private JPanel infoCard;
     private JButton restartButton;
 
-    private final View view;
 
     public Login(){
-        this.view = View.view;
 
         if(null == Database.getConnection()){
             this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
