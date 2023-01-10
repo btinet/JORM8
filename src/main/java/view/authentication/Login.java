@@ -19,7 +19,6 @@ public class Login extends JPanel implements SystemMessage {
     private JPasswordField passwordField1;
     private JButton button1;
     private JLabel errorLabel;
-    private JLabel onlineLabel;
     private JPanel infoCard;
     private JButton restartButton;
 
@@ -27,18 +26,12 @@ public class Login extends JPanel implements SystemMessage {
     public Login(){
 
         if(null == Database.getConnection()){
-            this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
-            this.onlineLabel.setText("OFFLINE");
-            this.onlineLabel.setForeground(SysColor.DANGER.get());
             this.button1.setEnabled(false);
             this.restartButton.setVisible(true);
             this.restartButton.putClientProperty(FlatClientProperties.BUTTON_TYPE,FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
             this.restartButton.addActionListener(new AppController()::restartApplication);
         } else {
             this.restartButton.setVisible(false);
-            this.onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
-            this.onlineLabel.setText("ONLINE");
-            this.onlineLabel.setForeground(SysColor.SUCCESS.get());
             this.button1.setEnabled(true);
         }
 

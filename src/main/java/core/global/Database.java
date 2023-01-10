@@ -22,7 +22,7 @@ public class Database {
                 properties.load(Resources.getConfig("database.properties").openStream());
                 Class.forName(properties.getProperty(DB_DRIVER_CLASS));
                 connection = DriverManager.getConnection(properties.getProperty(DB_URL), properties.getProperty(DB_USERNAME) , properties.getProperty(DB_PASSWORD) );
-                connection.setNetworkTimeout(Executors.newFixedThreadPool(16),5000);
+                connection.setNetworkTimeout(Executors.newFixedThreadPool(16),1000);
                 System.out.println("Verbindung hergestellt.");
                 Session.set("connection","online");
             } catch (ClassNotFoundException | SQLException | IOException e) {

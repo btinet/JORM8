@@ -120,15 +120,6 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
       </vspacer>
-      <component id="8e5a" class="javax.swing.JLabel" binding="onlineLabel">
-        <constraints>
-          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="online"/>
-        </properties>
-      </component>
       <grid id="4c591" binding="infoCard" layout-manager="GridBagLayout">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
