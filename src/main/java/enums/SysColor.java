@@ -1,4 +1,4 @@
-package core.global;
+package enums;
 
 import java.awt.*;
 

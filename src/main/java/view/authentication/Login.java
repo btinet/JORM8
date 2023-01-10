@@ -5,6 +5,7 @@ import controller.AppController;
 import controller.AuthenticationController;
 import core.global.*;
 import core.view.View;
+import enums.SysColor;
 
 import javax.swing.*;
 import java.awt.*;

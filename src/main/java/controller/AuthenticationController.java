@@ -19,12 +19,13 @@ public class AuthenticationController extends Controller {
 
     public AuthenticationController(){
         super(new BenutzerRepository(true));
-
     }
 
     public void index(ActionEvent e){
         // Neues Panel erstellen und Login-Formular hinzufügen
-        MainPanel main = new MainPanel().addComponent(new Login());
+        MainPanel main = new MainPanel()
+                .addComponent(new Login())
+        ;
 
         // Panel zum Kartenlayout hinzufügen
         addLayoutComponent(main, "login");
@@ -52,13 +53,13 @@ public class AuthenticationController extends Controller {
 
                 // Passwort stimmt nicht
             } else {
-                Session.set("login_error","Passwort und Kennung stimmen nicht überein!");
+                Session.set("login_error", PASSWORD_NOT_FOUND);
                 Response.redirectToController(new AuthenticationController()::index);
             }
 
             // Benutzer nicht gefunden
         } else {
-            Session.set("login_error","Kennung nicht gefunden!");
+            Session.set("login_error",USERNAME_NOT_FOUND);
             Response.redirectToController(new AuthenticationController()::index);
         }
     }

@@ -3,13 +3,15 @@ package core.controller;
 import core.global.Response;
 import core.model.Repository;
 import core.view.View;
+import enums.SystemColor;
+import enums.SystemMessage;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class Controller implements ActionListener {
+public abstract class Controller implements ActionListener, SystemMessage, SystemColor {
 
     protected View view;
 

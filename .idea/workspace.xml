@@ -9,29 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="add icon">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/app/MainPanel.java" afterDir="false" />
+    <list default="true" id="207b3c06-db23-47de-84f6-5936c14784c1" name="Changes" comment="update controllers">
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/SysMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/SystemColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/SystemMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AntragController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AntragController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FachController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/KollegiatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/KollegiatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LehrkraftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LehrkraftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ThemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ThemaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/model/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/BagConstraints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/AppMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/app/LoginMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/LoginMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/global/SysColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/SysColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/authentication/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/authentication/LoginForm.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +28,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -237,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673211655517</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update controllers">
+      <created>1673296854870</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673296854870</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,7 +260,8 @@
     <MESSAGE value="update controlling" />
     <MESSAGE value="update layout" />
     <MESSAGE value="add icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="add icon" />
+    <MESSAGE value="update controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="update controllers" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
