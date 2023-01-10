@@ -12,6 +12,7 @@ import repository.BenutzerRepository;
 import view.app.MainPanel;
 import view.authentication.Login;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
@@ -24,7 +25,9 @@ public class AuthenticationController extends Controller {
     public void index(ActionEvent e){
         // Neues Panel erstellen und Login-Formular hinzufügen
         MainPanel main = new MainPanel()
+                // TODO: addNorth(), addSouth() und addCenter() als Shortcut hinzufügen.
                 .addComponent(new Login())
+                .addComponent(new JTextField("Bla und blub"))
         ;
 
         // Panel zum Kartenlayout hinzufügen
@@ -53,13 +56,13 @@ public class AuthenticationController extends Controller {
 
                 // Passwort stimmt nicht
             } else {
-                Session.set("login_error", PASSWORD_NOT_FOUND);
+                Session.set(LOGIN_ERROR, PASSWORD_NOT_FOUND);
                 Response.redirectToController(new AuthenticationController()::index);
             }
 
             // Benutzer nicht gefunden
         } else {
-            Session.set("login_error",USERNAME_NOT_FOUND);
+            Session.set(LOGIN_ERROR,USERNAME_NOT_FOUND);
             Response.redirectToController(new AuthenticationController()::index);
         }
     }
