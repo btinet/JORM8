@@ -37,6 +37,11 @@ public class Database {
     }
 
     public static void destroyConnection(){
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         connection = null;
     }
 
