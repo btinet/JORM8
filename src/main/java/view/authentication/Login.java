@@ -8,12 +8,13 @@ import controller.AuthenticationController;
 import core.global.*;
 
 import enums.SysColor;
+import enums.SystemColor;
 import enums.SystemMessage;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Login extends JPanel implements SystemMessage {
+public class Login extends JPanel implements SystemMessage, SystemColor {
     private JPanel panel1;
     private JTextField textField1;
     private JPasswordField passwordField1;
@@ -36,7 +37,7 @@ public class Login extends JPanel implements SystemMessage {
         }
 
         if(0 < Session.copy(LOGIN_ERROR).length()){
-            this.infoCard.setBackground(SysColor.SECONDARY.get());
+            this.infoCard.setBackground(SECONDARY);
             this.infoCard.setVisible(true);
             this.setErrorLabel(Session.get(LOGIN_ERROR));
         } else {
@@ -78,7 +79,7 @@ public class Login extends JPanel implements SystemMessage {
     }
 
     protected void setErrorLabel(String message){
-        this.errorLabel.setForeground(SysColor.DANGER.get());
+        this.errorLabel.setForeground(DANGER);
         this.errorLabel.setText(message);
         this.errorLabel.setIcon(new ImageIcon(Resources.getImage("icons8_error_16px.png")));
     }

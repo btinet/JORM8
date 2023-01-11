@@ -31,20 +31,23 @@ public class AuthenticationController extends Controller {
 
     public void index(ActionEvent e){
 
-        JToolBar toolBar = new JToolBar();
 
+
+        // TODO: in eigene Label-Klasse verschieben.
         JLabel onlineLabel = new JLabel();
         onlineLabel.setBorder(new EmptyBorder(0,0,0,5));
         if(null == Database.getConnection()){
             onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
             onlineLabel.setText("OFFLINE");
-            onlineLabel.setForeground(SysColor.DANGER.get());
+            onlineLabel.setForeground(DANGER);
         } else {
             onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
             onlineLabel.setText("ONLINE");
-            onlineLabel.setForeground(SysColor.SUCCESS.get());
+            onlineLabel.setForeground(SUCCESS);
         }
 
+        // TODO: in eigene ToolBar-Klasse übersetzen und nach view verschieben.
+        JToolBar toolBar = new JToolBar();
         toolBar.setBackground(SECONDARY);
         JButton tBtn1 = new JButton("neuer Benutzer");
         JButton tBtn2 = new JButton("Datensatz öffnen");
