@@ -1,6 +1,7 @@
 package entity;
 
 import core.model.Entity;
+import repository.LehrkraftRepository;
 
 public class Benutzer extends Entity {
 
@@ -38,5 +39,10 @@ public class Benutzer extends Entity {
 
     public void setPasswort(String passwort) {
         this.passwort = passwort;
+    }
+
+    public Lehrkraft getLehrkraft(){
+        LehrkraftRepository lehrkraftRepository = new LehrkraftRepository(true);
+        return (Lehrkraft) lehrkraftRepository.find(this.lid,"LID");
     }
 }

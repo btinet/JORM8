@@ -14,7 +14,9 @@ import entity.Benutzer;
 import enums.SysColor;
 import repository.BenutzerRepository;
 
+import view.app.AppToolBar;
 import view.app.MainPanel;
+import view.authentication.AuthenticationToolBar;
 import view.authentication.Login;
 
 import javax.swing.*;
@@ -31,40 +33,9 @@ public class AuthenticationController extends Controller {
 
     public void index(ActionEvent e){
 
-
-
-        // TODO: in eigene Label-Klasse verschieben.
-        JLabel onlineLabel = new JLabel();
-        onlineLabel.setBorder(new EmptyBorder(0,0,0,5));
-        if(null == Database.getConnection()){
-            onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_offline_16px.png")));
-            onlineLabel.setText("OFFLINE");
-            onlineLabel.setForeground(DANGER);
-        } else {
-            onlineLabel.setIcon(new ImageIcon(Resources.getImage("icons8_online_16px.png")));
-            onlineLabel.setText("ONLINE");
-            onlineLabel.setForeground(SUCCESS);
-        }
-
-        // TODO: in eigene ToolBar-Klasse übersetzen und nach view verschieben.
-        JToolBar toolBar = new JToolBar();
-        toolBar.setBackground(SECONDARY);
-        JButton tBtn1 = new JButton("neuer Benutzer");
-        JButton tBtn2 = new JButton("Datensatz öffnen");
-        JButton tBtn3 = new JButton("Datensatz speichern");
-        tBtn1.setIcon(new ImageIcon(Resources.getImage("icons8_add_new_16px.png")));
-        tBtn2.setIcon(new ImageIcon(Resources.getImage("icons8_documents_folder_16px.png")));
-        tBtn3.setIcon(new ImageIcon(Resources.getImage("icons8_save_16px_1.png")));
-        toolBar.add(tBtn1);
-        toolBar.addSeparator();
-        toolBar.add(tBtn2);
-        toolBar.add(tBtn3);
-        toolBar.add(Box.createHorizontalGlue());
-        toolBar.add(onlineLabel);
-
         // Neues Panel erstellen und Login-Formular hinzufügen
         MainPanel main = new MainPanel()
-                .addNorth(toolBar, new Insets(0,0,5,0))
+                .addNorth(new AuthenticationToolBar(), new Insets(0,0,5,0))
                 .addCenter(new Login())
         ;
 
@@ -90,7 +61,7 @@ public class AuthenticationController extends Controller {
             // Passwort stimmt
             if(Objects.equals(benutzer.getPasswort(),password)){
                 Session.setBenutzer(benutzer);
-                Response.redirectToController(new AppController()::index);
+                Response.redirectToController(new KollegiatController()::index);
 
                 // Passwort stimmt nicht
             } else {

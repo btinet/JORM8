@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class AppMenuBar {
 
-    public JMenuBar getComponent(View view){
+    public JMenuBar getComponent(){
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(224,224,224));
 

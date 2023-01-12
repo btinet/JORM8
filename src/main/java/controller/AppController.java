@@ -38,7 +38,7 @@ public class AppController extends Controller {
         ArrayList<Kollegiat> kollegiatArrayList = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
         ArrayList<HashMap<String, String>> kJoin = ((KollegiatRepository) this.repository).getKollegiatJoinAntrag(1);
-        this.view.frame.setJMenuBar(new AppMenuBar().getComponent(this.view));
+        this.view.frame.setJMenuBar(new AppMenuBar().getComponent());
 
         JPanel main = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

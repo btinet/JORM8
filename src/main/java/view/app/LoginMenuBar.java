@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class LoginMenuBar {
 
-    public JMenuBar getComponent(View view){
+    public JMenuBar getComponent(){
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(224,224,224));
         JMenu menu1 = new JMenu("Datei");
