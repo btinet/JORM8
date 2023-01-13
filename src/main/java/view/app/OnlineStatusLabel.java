@@ -2,12 +2,10 @@ package view.app;
 
 import core.global.Database;
 import core.global.Resources;
-import enums.SystemColor;
-import enums.SystemMessage;
 
 import javax.swing.*;
 
-public class OnlineStatusLabel extends JButton implements SystemMessage, SystemColor {
+public class OnlineStatusLabel extends JButton {
 
     public OnlineStatusLabel(){
         if(null == Database.getConnection()){

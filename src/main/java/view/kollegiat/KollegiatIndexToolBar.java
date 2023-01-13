@@ -4,8 +4,6 @@ import core.global.Session;
 import view.app.AppToolBar;
 import view.app.OnlineStatusLabel;
 
-import javax.swing.*;
-
 public class KollegiatIndexToolBar extends AppToolBar {
 
     public KollegiatIndexToolBar(){

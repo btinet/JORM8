@@ -2,7 +2,6 @@ package view.app;
 
 import controller.AppController;
 import core.global.Resources;
-import core.view.View;
 
 import javax.swing.*;
 import java.awt.*;
