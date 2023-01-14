@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.kollegiat.KollegiatIndex">
   <grid id="27dc6" binding="panel1" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="515" height="400"/>
+      <xy x="20" y="20" width="515" height="416"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -15,14 +15,14 @@
       </vspacer>
       <hspacer id="45616">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="2.0" weighty="0.0"/>
         </constraints>
       </hspacer>
       <scrollpane id="42066" binding="scrollPane">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.5" weighty="0.5"/>
+          <grid row="2" column="0" row-span="2" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.1" weighty="0.5"/>
         </constraints>
         <properties>
           <verticalScrollBarPolicy value="22"/>
@@ -71,6 +71,30 @@
           <horizontalTextPosition value="11"/>
           <icon value="icons/icons8_documents_folder_16px.png"/>
           <text value="Details..."/>
+        </properties>
+      </component>
+      <component id="c0d75" class="javax.swing.JTextField" binding="searchField">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <hspacer id="eefe5">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </hspacer>
+      <component id="fefe4" class="javax.swing.JLabel" binding="resultCount">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
         </properties>
       </component>
     </children>

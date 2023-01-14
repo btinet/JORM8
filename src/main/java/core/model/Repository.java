@@ -90,7 +90,7 @@ public abstract class Repository {
     }
 
 
-    public ArrayList<Entity> findBy(HashMap<String, String> condition){
+    public ArrayList<? extends Entity> findBy(HashMap<String, String> condition){
         try {
             try {
                 QueryBuilder query = this.createQueryBuilder()

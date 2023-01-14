@@ -1,6 +1,7 @@
 package controller;
 
 import core.controller.Controller;
+import core.global.Session;
 import core.model.Entity;
 import core.model.ResultSorter;
 import entity.Kollegiat;
@@ -14,6 +15,7 @@ import view.kollegiat.KollegiatIndexToolBar;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
 public class KollegiatController extends Controller {
@@ -28,9 +30,18 @@ public class KollegiatController extends Controller {
         // Alle Kollegiat-Datensätze nach Nachname sortiert abrufen.
         ArrayList<Kollegiat> kollegiaten = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
+        ArrayList<Kollegiat> kollegiatResult = new ArrayList<>();
+
+        if(0 < Session.copy("search_string").length()){
+            HashMap<String, String> condition = new HashMap<>();
+            condition.put("name",Session.copy("search_string"));
+            kollegiatResult = (ArrayList<Kollegiat>) this.repository.findBy(condition);
+        }
+
         // JList erstellen und Daten zuweisen.
         KollegiatIndex kollegiatIndex = new KollegiatIndex();
         kollegiatIndex.addData(kollegiaten);
+        kollegiatIndex.addSearchResult(kollegiatResult);
 
         // Neues Panel erstellen und Liste hinzufügen.
         MainPanel main = new MainPanel()
