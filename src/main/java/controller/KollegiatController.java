@@ -2,12 +2,10 @@ package controller;
 
 import core.controller.Controller;
 import core.global.Session;
-import core.model.Entity;
 import core.model.ResultSorter;
 import entity.Kollegiat;
 import repository.KollegiatRepository;
 import view.app.AppMenuBar;
-import view.app.LoginMenuBar;
 import view.app.MainPanel;
 import view.kollegiat.KollegiatIndex;
 import view.kollegiat.KollegiatIndexToolBar;
@@ -33,9 +31,9 @@ public class KollegiatController extends Controller {
         ArrayList<Kollegiat> kollegiatResult = new ArrayList<>();
 
         if(0 < Session.copy("search_string").length()){
-            HashMap<String, String> condition = new HashMap<>();
-            condition.put("name",Session.copy("search_string"));
-            kollegiatResult = (ArrayList<Kollegiat>) this.repository.findBy(condition);
+            if(this.repository instanceof KollegiatRepository){
+                kollegiatResult = (ArrayList<Kollegiat>) ((KollegiatRepository) this.repository).findBySearchString(Session.copy("search_string"));
+            }
         }
 
         // JList erstellen und Daten zuweisen.

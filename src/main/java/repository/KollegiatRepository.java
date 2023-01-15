@@ -1,5 +1,6 @@
 package repository;
 
+import core.model.Entity;
 import core.model.Repository;
 import entity.Kollegiat;
 import java.lang.reflect.InvocationTargetException;
@@ -25,15 +26,28 @@ public class KollegiatRepository extends Repository {
                     .getQuery()
                     .getListResult()
             ;
-        } catch (SQLException e) {
+        } catch (SQLException | InvocationTargetException | NoSuchMethodException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        }
+
+    }
+
+    public ArrayList<? extends Entity> findBySearchString(String searchString) {
+        this.setAlias("k");
+
+        try {
+            return this.createQueryBuilder()
+                    .selectOrm()
+                    .orWhere("vorname LIKE ?")
+                    .orWhere("name LIKE ?")
+                    .setParameter(1,"%" + searchString + "%")
+                    .setParameter(2,"%" + searchString + "%")
+                    .getQuery()
+                    .getResult()
+                    ;
+        } catch (SQLException | InvocationTargetException | NoSuchMethodException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
 

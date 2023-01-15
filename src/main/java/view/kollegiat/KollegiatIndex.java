@@ -17,10 +17,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor {
     private JList<Object> list1;
@@ -30,7 +32,12 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
     private JButton neuButton;
     private JButton detailsButton;
     private JTextField searchField;
+    private JScrollPane sp;
+    private JList list2;
+    private JTable table1;
+    private JPanel resultPanel;
     private JLabel resultCount;
+    private JPanel searchResultPanel;
 
     private ArrayList<? extends Entity> entities = new ArrayList<>();
 
@@ -58,8 +65,6 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
         scrollPane.putClientProperty(FlatClientProperties.SCROLL_PANE_SMOOTH_SCROLLING,true);
         scrollPane.putClientProperty(FlatClientProperties.SCROLL_BAR_SHOW_BUTTONS,true);
 
-
-
         this.addListSelectionListener(this.list1);
         this.addMouseListener(this.list1);
 
@@ -70,13 +75,33 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
         this.list1.setListData(entities.toArray());
     }
 
-    public void addSearchResult(ArrayList<? extends Entity> entities){
-        this.entities = entities;
-        this.updateSearchResult();
+    public void addSearchResult(ArrayList<Kollegiat> entities){
+
+        DefaultTableModel model = (DefaultTableModel) this.table1.getModel();
+
+        model.addColumn("Vorname");
+        model.addColumn("Nachname");
+        model.addColumn("Tutor");
+        model.addColumn("Betreuer");
+
+        for(Kollegiat kollegiat : entities){
+                model.addRow(new Object[]{ kollegiat.getVorname(), kollegiat.getName(),kollegiat.getTutor(), kollegiat.getBetreuer()});
+        }
+        this.list2.setListData(entities.toArray());
     }
 
     public void updateSearchResult(){
-        this.resultCount.setText(String.valueOf(this.entities.size()));
+        // this.resultCount.setText(String.valueOf(this.entities.size()));
+        int i = 0;
+        BagConstraints constraints = new BagConstraints();
+        for(Kollegiat kollegiat :(ArrayList<Kollegiat>) this.entities){
+            constraints.setRow(i);
+            KollegiatIndexSearchResult index = new KollegiatIndexSearchResult();
+            index.setName(kollegiat.getVorname() + " " + kollegiat.getName());
+            this.resultPanel.add(index.getPanel(),constraints);
+            i++;
+        }
+
     }
 
     private void onSearch(){
