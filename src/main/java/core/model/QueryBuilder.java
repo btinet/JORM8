@@ -509,7 +509,7 @@ public class QueryBuilder {
         return list;
     }
 
-    public Entity getOnOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public Entity getOneOrNullResult() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         this.statement.setMaxRows(1);
         this.statement.executeQuery();

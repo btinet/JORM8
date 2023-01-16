@@ -74,7 +74,7 @@ public abstract class Repository {
                     }
                 }
                 return query.getQuery()
-                        .getOnOrNullResult()
+                        .getOneOrNullResult()
                         ;
 
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
@@ -160,7 +160,7 @@ public abstract class Repository {
                         .andWhere(field + " = ?")
                         .setParameter(1,id)
                         .getQuery()
-                        .getOnOrNullResult()
+                        .getOneOrNullResult()
                         ;
 
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
