@@ -3,7 +3,7 @@ package enums;
 public interface SystemMessage {
 
     /**
-     * Session-Konstanten
+     * Schlüssel-Konstanten
      */
     String LOGIN_ERROR = "login_error";
 

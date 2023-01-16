@@ -4,9 +4,7 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import controller.AuthenticationController;
 import core.global.Database;
 import core.global.Response;
-import core.view.View;
 
-import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
