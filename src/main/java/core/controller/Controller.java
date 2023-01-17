@@ -13,12 +13,11 @@ import java.awt.event.ActionListener;
 
 public abstract class Controller implements ActionListener, SystemMessage, SystemColor {
 
-    protected View view;
+    protected View view = View.view;
 
     protected Repository repository;
 
     public Controller(Repository repository){
-       this.view = View.view;
        this.repository = repository;
     }
 

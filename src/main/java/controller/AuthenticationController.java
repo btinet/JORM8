@@ -16,6 +16,7 @@ import java.util.Objects;
 
 public class AuthenticationController extends Controller {
 
+    // Das Erzeugen eines Objektes einer neuen Klasse im Konstruktor stellt Komposition dar.
     public AuthenticationController(){
         super(new BenutzerRepository(true));
     }
@@ -61,6 +62,7 @@ public class AuthenticationController extends Controller {
             // Benutzer nicht gefunden
         } else {
             Session.set(LOGIN_ERROR,USERNAME_NOT_FOUND);
+
             Response.redirectToController(new AuthenticationController()::index);
         }
     }
