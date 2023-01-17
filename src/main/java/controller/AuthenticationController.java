@@ -1,26 +1,15 @@
 package controller;
 
-import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatPropertiesLaf;
 import core.controller.Controller;
-import core.global.Database;
-import core.global.Resources;
 import core.global.Response;
 import core.global.Session;
 import core.model.Condition;
-
 import entity.Benutzer;
-
-import enums.SysColor;
 import repository.BenutzerRepository;
-
-import view.app.AppToolBar;
 import view.app.MainPanel;
 import view.authentication.AuthenticationToolBar;
 import view.authentication.Login;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
