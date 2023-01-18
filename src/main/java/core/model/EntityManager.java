@@ -1,9 +1,6 @@
 package core.model;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.sql.SQLException;
-import java.util.Map;
 
 /**
  * Der Entity-Manager verwaltet die Entitäten der jeweiligen Relationen

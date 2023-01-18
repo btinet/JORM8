@@ -33,19 +33,21 @@ public class KollegiatRepository extends Repository {
 
     }
 
-    public ArrayList<? extends Entity> findBySearchString(String searchString) {
+    public ArrayList<HashMap<String, String>> findBySearchString(String searchString) {
         this.setAlias("k");
 
         try {
             return this.createQueryBuilder()
-                    .selectOrm()
-                    .orWhere("vorname LIKE ?")
-                    .orWhere("name LIKE ?")
+                    .select("k.name, k.vorname, t.name AS tutorName , t.anrede AS tutorAnrede, b.name AS betreuerName, b.anrede as betreuerAnrede")
+                    .innerJoin("Lehrkraft t","k.tutorId","t.lid")
+                    .innerJoin("Lehrkraft b","k.betreuerId","b.lid")
+                    .orWhere("k.vorname LIKE ?")
+                    .orWhere("k.name LIKE ?")
                     .setParameter(1,"%" + searchString + "%")
                     .setParameter(2,"%" + searchString + "%")
                     .getQuery()
-                    .getResult()
-                    ;
+                    .getListResult()
+            ;
         } catch (SQLException | InvocationTargetException | NoSuchMethodException | InstantiationException |
                  IllegalAccessException e) {
             throw new RuntimeException(e);

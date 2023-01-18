@@ -22,6 +22,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor {
@@ -75,7 +76,7 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
         this.list1.setListData(entities.toArray());
     }
 
-    public void addSearchResult(ArrayList<Kollegiat> entities){
+    public void addSearchResult(ArrayList<HashMap<String, String>> entities){
 
         DefaultTableModel model = (DefaultTableModel) this.table1.getModel();
 
@@ -84,10 +85,15 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
         model.addColumn("Tutor");
         model.addColumn("Betreuer");
 
-        for(Kollegiat kollegiat : entities){
-                model.addRow(new Object[]{ kollegiat.getVorname(), kollegiat.getName(),kollegiat.getTutor(), kollegiat.getBetreuer()});
+        for(HashMap<String, String> item : entities){
+                model.addRow(new Object[]{
+                        item.get("vorname"),
+                        item.get("name"),
+                        item.get("tutorAnrede") + " " + item.get("tutorName"),
+                        item.get("betreuerAnrede") + " " + item.get("betreuerName")
+                });
         }
-        this.list2.setListData(entities.toArray());
+        // this.list2.setListData(entities.toArray());
     }
 
     public void updateSearchResult(){

@@ -13,6 +13,7 @@ import view.kollegiat.KollegiatIndexToolBar;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
 public class KollegiatController extends Controller {
@@ -27,11 +28,11 @@ public class KollegiatController extends Controller {
         // Alle Kollegiat-Datensätze nach Nachname sortiert abrufen.
         ArrayList<Kollegiat> kollegiaten = (ArrayList<Kollegiat>) this.repository.findAll(new ResultSorter("name","asc").getMap());
 
-        ArrayList<Kollegiat> kollegiatResult = new ArrayList<>();
+        ArrayList<HashMap<String, String>> kollegiatResult = new ArrayList<>();
 
         if(0 < Session.copy("search_string").length()){
             if(this.repository instanceof KollegiatRepository){
-                kollegiatResult = (ArrayList<Kollegiat>) ((KollegiatRepository) this.repository).findBySearchString(Session.copy("search_string"));
+                kollegiatResult =  ((KollegiatRepository) this.repository).findBySearchString(Session.copy("search_string"));
             }
         }
 
