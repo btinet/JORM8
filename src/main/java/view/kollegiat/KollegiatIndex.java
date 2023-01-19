@@ -138,7 +138,7 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
                         detailsButton.setEnabled(true);
                     }
 
-                    if(list.getSelectedValue() == null){
+                    if(list.getSelectedValue() == null ^ !list.isFocusOwner()){
                         detailsButton.setEnabled(false);
                     }
                 }
