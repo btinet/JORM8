@@ -82,24 +82,10 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
       </hspacer>
-      <scrollpane id="9869c" binding="sp">
-        <constraints>
-          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="2.0" weighty="0.5"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="f2c8c" class="javax.swing.JList" binding="list2" default-binding="true">
-            <constraints/>
-            <properties/>
-          </component>
-        </children>
-      </scrollpane>
       <scrollpane id="6098c">
         <constraints>
-          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="2.0" weighty="0.5"/>
+          <grid row="2" column="5" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="2.0" weighty="0.0"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -114,6 +100,12 @@
           </component>
         </children>
       </scrollpane>
+      <vspacer id="a2e7f">
+        <constraints>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="2.0"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>

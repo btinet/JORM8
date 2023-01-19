@@ -12,6 +12,7 @@ import core.view.BagConstraints;
 import entity.Kollegiat;
 import enums.SystemColor;
 import enums.SystemMessage;
+import view.app.HorizontalAlignmentRenderer;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,8 +34,6 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
     private JButton neuButton;
     private JButton detailsButton;
     private JTextField searchField;
-    private JScrollPane sp;
-    private JList list2;
     private JTable table1;
     private JPanel resultPanel;
     private JLabel resultCount;
@@ -80,19 +79,27 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
 
         DefaultTableModel model = (DefaultTableModel) this.table1.getModel();
 
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+
         model.addColumn("Vorname");
         model.addColumn("Nachname");
-        model.addColumn("Tutor");
-        model.addColumn("Betreuer");
+        model.addColumn("Anträge");
+        model.addColumn("Tutor:in");
+        model.addColumn("Betreuer:in");
+
 
         for(HashMap<String, String> item : entities){
                 model.addRow(new Object[]{
                         item.get("vorname"),
                         item.get("name"),
+                        item.get("antragCount"),
                         item.get("tutorAnrede") + " " + item.get("tutorName"),
                         item.get("betreuerAnrede") + " " + item.get("betreuerName")
                 });
         }
+
+        // table1.getColumnModel().getColumn(3).setCellRenderer(new HorizontalAlignmentRenderer(SwingConstants.RIGHT));
         // this.list2.setListData(entities.toArray());
     }
 

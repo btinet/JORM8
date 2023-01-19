@@ -501,12 +501,13 @@ public class QueryBuilder {
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         System.err.println(metaData.getColumnCount() + " Spalten");
         while (result.next()) {
-            HashMap<String, String> row = new HashMap<>(metaData.getColumnCount());
-            for (int i = 1; i <= metaData.getColumnCount();i++) {
-                System.out.println(metaData.getColumnName(i) + " : " + result.getObject(i).toString());
-                row.put(metaData.getColumnLabel(i),result.getObject(i).toString());
+            if(!result.wasNull()){
+                HashMap<String, String> row = new HashMap<>(metaData.getColumnCount());
+                for (int i = 1; i <= metaData.getColumnCount();i++) {
+                    row.put(metaData.getColumnLabel(i),result.getObject(i).toString());
+                }
+                list.add(row);
             }
-            list.add(row);
         }
         return list;
     }

@@ -3,6 +3,8 @@ package core.view;
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.intellijthemes.*;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import controller.AuthenticationController;
 
 import core.global.Resources;
@@ -27,6 +29,7 @@ public class View {
         try {
             UIManager.setLookAndFeel( new FlatLightLaf());
             FlatVuesionIJTheme.setup();
+            // FlatGitHubDarkContrastIJTheme.setup();
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         }
