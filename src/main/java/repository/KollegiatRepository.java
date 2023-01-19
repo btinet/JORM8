@@ -38,8 +38,12 @@ public class KollegiatRepository extends Repository {
 
         try {
             return this.createQueryBuilder()
-                    .select("k.name, k.vorname, t.name AS tutorName , t.anrede AS tutorAnrede, b.name AS betreuerName, b.anrede as betreuerAnrede")
-                    .select(", a.alsEinzelPruefung AS 'antragCount'")
+                    .select("" +
+                            "k.name, k.vorname," +
+                            "t.name AS tutorName , t.anrede AS tutorAnrede," +
+                            "b.name AS betreuerName, b.anrede as betreuerAnrede," +
+                            "a.alsEinzelPruefung AS 'antragCount'" +
+                            "")
                     .innerJoin("Lehrkraft t","k.tutorId","t.lid")
                     .innerJoin("Lehrkraft b","k.betreuerId","b.lid")
                     .innerJoin("Antrag a","kid")

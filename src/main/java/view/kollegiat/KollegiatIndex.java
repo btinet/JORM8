@@ -22,6 +22,9 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +87,7 @@ public class KollegiatIndex extends JPanel implements SystemMessage, SystemColor
 
         model.addColumn("Vorname");
         model.addColumn("Nachname");
-        model.addColumn("Anträge");
+        model.addColumn("Einzelprüfung");
         model.addColumn("Tutor:in");
         model.addColumn("Betreuer:in");
 
