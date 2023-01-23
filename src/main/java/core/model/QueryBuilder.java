@@ -1,7 +1,7 @@
 package core.model;
 
-import com.sun.istack.internal.Nullable;
 import core.global.Database;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
