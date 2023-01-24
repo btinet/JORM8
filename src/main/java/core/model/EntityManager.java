@@ -73,7 +73,7 @@ public class EntityManager extends Repository {
     /**
      *
      * @param e Entity-Objekt, dass den Datensatz enthält.
-     * @param id Primärschlüssel des zu aktualisierenden Tupels.
+     * @param id Primärschlüssel des zu entfernenden Tupels.
      */
     public void remove(Entity e, int id){
         this.entity = e;
@@ -83,7 +83,7 @@ public class EntityManager extends Repository {
     /**
      *
      * @param e Entity-Objekt, dass den Datensatz enthält.
-     * @param id Primärschlüssel des zu aktualisierenden Tupels.
+     * @param id Primärschlüssel des zu entfernenden Tupels.
      * @param field Feldname, falls der Name des Primärschlüssels vom Standard abweicht.
      */
     public void remove(Entity e, int id, String field){
